@@ -19,7 +19,7 @@ export default function Page() {
         </svg>
       </div>
       <div className="relative z-0 flex flex-col items-center">
-        <div className="bg-white p-3 w-full font-bold flex flex-col items-center">
+        <div className="bg-white px-3 py-12 w-full font-bold flex flex-col items-center rounded-xl">
           <h1 className="text-2xl md:text-5xl text-center">
             VAIO : Software Engineer
           </h1>
@@ -27,7 +27,7 @@ export default function Page() {
             AVITA / VAIO
           </h1>
           {/*Carousel*/}
-          <div className=" w-10/12 lg:w-4/6 h-auto flex flex-col items-center mb-10">
+          <div className=" w-10/12 lg:w-4/6 h-auto flex flex-col items-center mb-10 lg:mt-10">
             <CarouselBanner images={bannerImages} />
           </div>
         </div>
@@ -76,7 +76,7 @@ export default function Page() {
             Project Highlights
           </h1>
           <ExperienceProjectRow
-            titleLink={"https://avitawebsite.vercel.app/tw"}
+            titleLink={"https://www.avita.com/tw"}
             title={"Avita Website"}
             titleBold={true}
             titleSize="text-xl"

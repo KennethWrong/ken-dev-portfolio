@@ -19,7 +19,7 @@ export default function Page() {
         </svg>
       </div>
       <div className="relative z-0 flex flex-col items-center">
-        <div className="bg-black p-3 w-full font-bold flex flex-col items-center">
+        <div className="bg-black px-3 py-12 w-full font-bold flex flex-col items-center rounded-xl">
           <h1 className="text-2xl md:text-5xl text-center text-white">
             <span className="text-rose-500 font-bold">Tiktok </span>: Backend
             Engineer
@@ -28,7 +28,7 @@ export default function Page() {
             PGC: User Creator Product
           </h1>
           {/*Carousel*/}
-          <div className=" w-10/12 lg:w-4/6 h-auto flex flex-col items-center mb-10">
+          <div className=" w-10/12 lg:w-4/6 h-auto flex flex-col items-center mb-10 lg:mt-10">
             <CarouselBanner images={bannerImages} />
           </div>
         </div>
