@@ -1,3 +1,6 @@
+"use client";
+import { useRouter } from "next/navigation";
+
 type TimelineItem = {
   companyName: string;
   positionName: string;
@@ -99,6 +102,8 @@ const companyTimelineList: TimelineItem[] = [
 ];
 
 export default function Timeline() {
+  const router = useRouter();
+
   const div1Style =
     "flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-300 sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-indigo-600 after:border-4 after:box-content after:border-slate-50 after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5 mb-10";
   const dateStyle =
@@ -109,10 +114,22 @@ export default function Timeline() {
   const subheadingStyle = "text-gray-500 text-md font-bold opacity-70 mb-2";
   const contextStyle = "text-slate-700 text-lg text-gray-700";
 
+  const redirectionStyle = "hover:opacity-40 hover:cursor-pointer";
+
   const renderTimelineItem = (timelineItem: TimelineItem, index: number) => {
     return (
       <div className={`${div1Style} mb-10`} key={index}>
-        <img src={timelineItem.imageSrc} className={`${logoStyle}`}></img>
+        <img
+          onClick={() => {
+            if (timelineItem.redirectionLink) {
+              router.push(timelineItem.redirectionLink);
+            }
+          }}
+          src={timelineItem.imageSrc}
+          className={`${logoStyle} ${
+            timelineItem.redirectionLink ? redirectionStyle : ""
+          }`}
+        ></img>
         <div className="flex flex-row">
           <div>
             <h1 className={`${headingStyle}`}>{timelineItem.companyName}</h1>

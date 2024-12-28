@@ -39,7 +39,20 @@ export default {
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out'
-  		}
+  		},
+		height: {
+		'40vh': '40vh',
+		'50vh': '50vh',
+		'70vh': '70vh',
+		'100vh': '100vh',
+		'300': '300',
+		'200': '200',
+		'250': '250',
+		'225': '225',
+		},
+		fontSize: {
+		'10xl': '20.87rem',
+		}
   	}
   },
   plugins: [require("tailwindcss-animate")],
