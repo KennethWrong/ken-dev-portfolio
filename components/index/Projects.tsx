@@ -60,10 +60,10 @@ const projectList: Project[] = [
 
 function Projects() {
   return (
-    <div className="relative font-inter antialiased mb-10">
+    <div className="relative font-inter antialiased mb-10" id={"project"}>
       <main className="relative flex flex-col justify-center overflow-hidden">
         <div className="w-full mx-auto px-5 md:px-6">
-          <h1 className="font-mono font-bold text-3xl mb-5 text-center lg:text-left">
+          <h1 className="font-bold text-3xl mb-5 text-center lg:text-left">
             {" "}
             Projects
           </h1>

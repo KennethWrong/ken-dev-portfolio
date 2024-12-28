@@ -1,10 +1,20 @@
+"use client";
 import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <div className="flex flex-col items-center text-center md:items-start p-3 text-gray-500">
-      <Link href="/">
-        <h1 className="md:text-sm text-xs">{`< Back To Portfolio`}</h1>
+    <div className="flex flex-row items-center justify-between text-center px-6 py-3 text-black font-extrabold fixed top-0 z-30 w-full bg-white text-xs md:text-lg lg:text-xl font-[Playfair]">
+      <Link href="/#intro">
+        <h1 className="">{`Intro`}</h1>
+      </Link>
+      <Link href="/#experience">
+        <h1 className="">{`Experience`}</h1>
+      </Link>
+      <Link href="/#project">
+        <h1 className="">{`Project`}</h1>
+      </Link>
+      <Link href="/#skills">
+        <h1 className="">{`Skills`}</h1>
       </Link>
     </div>
   );

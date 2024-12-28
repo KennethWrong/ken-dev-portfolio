@@ -52,6 +52,10 @@ export default {
 		},
 		fontSize: {
 		'10xl': '20.87rem',
+		},
+		fontFamily: {
+			Montserrat: "Montserrat",
+			Playfiar: "Playfair"
 		}
   	}
   },
