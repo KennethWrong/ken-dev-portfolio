@@ -7,7 +7,7 @@ export type Project = {
 };
 
 export default function ProjectCard({ project }: { project: Project }) {
-  const titleStyle = "font-mono text-2xl font-bold mb-2";
+  const titleStyle = "text-2xl font-bold mb-2";
 
   return (
     <div className=" bg-slate-200 rounded-lg p-2" key={project.id}>
@@ -30,7 +30,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                 <p className="text-lg text-white">{project.content}</p>
                 <a href={project.link} target="_blank">
                   <button
-                    className="font-mono px-4 py-2 text-sm mt-2
+                    className="px-4 py-2 text-sm mt-2
                                             text-white bg-green-600 rounded-lg"
                   >
                     View project

@@ -35,8 +35,8 @@ export default function Skills() {
   };
 
   return (
-    <div className="p-5 flex flex-col items-center">
-      <h1 className="font-mono font-bold text-3xl mb-5 text-center lg:text-start lg:self-start">
+    <div className="p-5 flex flex-col items-center" id={"skills"}>
+      <h1 className="font-bold text-3xl mb-5 text-center lg:text-start lg:self-start">
         Skills
       </h1>
       <div className="grid grid-cols-2 lg:grid-cols-7 md:grid-cols-5 md:grid-row-3 gap-4 gap-y-4 gap-x-6 items-center justify-center">

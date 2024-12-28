@@ -19,7 +19,7 @@ const companyTimelineList: TimelineItem[] = [
     employmentType: "Contract",
     location: "Remote",
     contents: [
-      "Working as a part-time contractor leading a team of 2 engineers for Vaio and Avita to revamp their website and migrate it from LAMP stack to a SPA in NextJS. Have to handle i18n content, handling traffic of users from SEA region (TW, HK, IN, SG).",
+      "Working as a part-time contractor alongside another engineer for Vaio and Avita to revamp their website and migrate it from LAMP stack to a SPA in NextJS. Have to handle i18n content, handling traffic of users from SEA region (TW, HK, IN, SG).",
       "Initiative to switch from LAMP stack hosted on Azure to NextJS is projected to save the company $21,000 USD on hosting + maintenance fees from 3rd party vendor locking.",
     ],
     imageSrc: "/images/vaioLogo.png",
@@ -110,7 +110,7 @@ export default function Timeline() {
     "sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-8 p-1 mb-3 sm:mb-0 text-gray-500 rounded-full opacity-70";
 
   const logoStyle = "w-28 h-28 rounded-xl mr-5 mb-5 md:mb-0";
-  const headingStyle = "font-mono font-bold text-2xl";
+  const headingStyle = "font-bold text-2xl";
   const subheadingStyle = "text-gray-500 text-md font-bold opacity-70 mb-2";
   const contextStyle = "text-slate-700 text-lg text-gray-700";
 
@@ -188,10 +188,10 @@ export default function Timeline() {
   };
 
   return (
-    <div className="relative font-inter antialiased mb-10">
+    <div className="relative font-inter antialiased mb-10" id={"experience"}>
       <main className="relative flex flex-col justify-center overflow-hidden">
         <div className="w-full mx-auto px-4 md:px-6">
-          <h1 className="font-mono font-bold text-3xl mb-5 text-center lg:text-left">
+          <h1 className="font-bold text-3xl mb-5 text-center lg:text-left">
             Experience
           </h1>
           <div className="flex flex-col justify-center divide-y divide-slate-200 [&>*]:py-6">

@@ -9,12 +9,13 @@ function Intro() {
 
   return (
     <div
+      id="intro"
       className="flex items-center bg-fixed lg:bg-cover bg-center flex-col w-full lg:justify-end justify-around bg-no-repeat h-100vh bg-white mb-12"
       style={{
         backgroundImage: "url('images/intro/hk_banner3_md.png')",
       }}
     >
-      <div className="p-3 font-mono bg-stone-50 rounded-md border-2 mb-10">
+      <div className="p-3 bg-stone-50 rounded-md border-2 mb-10">
         <div className="md:flex md:flex-col lg:justify-around align-middle p-2 items-center mb-12">
           <div className="flex flex-col items-center">
             <img
@@ -30,14 +31,14 @@ function Intro() {
               </h1>
             </a>
           </div>
-          <div className="max-w-2xl md:text-lg md:ml-4 text-md text-gray-700 dark:text-gray-200 mt-3 font-bold">
+          <div className="max-w-2xl md:text-lg md:ml-4 text-md text-gray-700 dark:text-gray-200 mt-3 font-bold flex flex-col items-center">
             <h1 className="text-3xl md:text-5xl text-center">
               {" "}
-              Kenneth Wong Hon Nam{" "}
+              Kenneth Wong Hon Nam
             </h1>
-            <p className={`${attributeStyle} ${subtextStyle}`}>
+            <p className={`${attributeStyle} ${subtextStyle} w-3/4`}>
               {
-                "A backend engineer whos currently training his biological neural net🧠🤖"
+                "A backend engineer who's currently training his biological neural net 🧠🤖"
               }
             </p>
             <div className="flex flex-row justify-center mt-2 mb-2">
