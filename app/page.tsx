@@ -83,7 +83,7 @@ export default function Home() {
       <Skills />
       <div
         id="intro"
-        className="flex items-center bg-fixed lg:bg-cover bg-center flex-col w-full lg:justify-end justify-around bg-no-repeat h-40 bg-white mb-12"
+        className="items-center bg-fixed lg:bg-cover bg-center flex-col w-full lg:justify-end justify-around bg-no-repeat h-40 bg-white mb-12 hidden md:flex"
         style={{
           backgroundImage: "url('images/intro/hk_banner3_md.png')",
         }}

@@ -10,7 +10,7 @@ function Intro() {
   return (
     <div
       id="intro"
-      className="flex items-center bg-fixed lg:bg-cover bg-center flex-col w-full lg:justify-end justify-around bg-no-repeat h-100vh bg-white mb-12"
+      className="flex items-center bg-fixed lg:bg-cover bg-center flex-col w-full lg:justify-end justify-around bg-no-repeat h-100vh bg-white mb-12 pt-10 lg:pt-0"
       style={{
         backgroundImage: "url('images/intro/hk_banner3_md.png')",
       }}
