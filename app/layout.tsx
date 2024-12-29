@@ -13,7 +13,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="font-['Raleway']">
+    <html
+      lang="en"
+      className="font-['Raleway'] scroll-smooth"
+      style={{ scrollBehavior: "smooth" }}
+    >
       <body>
         <Navbar />
         {children}
