@@ -1,7 +1,7 @@
-import ProjectCard from "../projects/ProjectCard";
 import { Project } from "../projects/ProjectCard";
+import TextImageRow from "../TextImageRow";
 
-const projectList: Project[] = [
+export const ProjectList: Project[] = [
   {
     id: 6,
     title: "Parsyll",
@@ -60,17 +60,36 @@ const projectList: Project[] = [
 
 function Projects() {
   return (
-    <div className="relative font-inter antialiased mb-10" id={"project"}>
-      <main className="relative flex flex-col justify-center overflow-hidden">
-        <div className="w-full mx-auto px-5 md:px-6">
-          <h1 className="font-bold text-3xl mb-5 text-center lg:text-left">
+    <div
+      className="flex font-inter antialiased mb-10 flex-col items-center"
+      id={"project"}
+    >
+      <main className="relative flex flex-col justify-center overflow-hidden items-center">
+        <div className="w-full mx-auto px-5 md:px-6 flex flex-col items-center">
+          <h1 className="font-bold text-3xl text-center lg:text-left lg:self-start justify-center">
             {" "}
             Projects
+            <span className="text-xs text-gray-500 ml-2 hover:cursor-pointer hover:text-gray-400">
+              <a href="/projects/">{" View All"}</a>
+            </span>
           </h1>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 gap-y-10 text-center">
-            {projectList.map((project, id) => (
-              <ProjectCard project={project} key={id} />
-            ))}
+          <div className="flex flex-col items-center">
+            {ProjectList.map((project, id) => {
+              if (id >= 3) {
+                return "";
+              }
+              return (
+                <TextImageRow
+                  key={id}
+                  title={project.title}
+                  titleLink={project.link}
+                  images={[{ imageSrc: project.imgSrc }]}
+                  text={project.content}
+                  textCenter={false}
+                  titleCenter={false}
+                />
+              );
+            })}
           </div>
         </div>
       </main>

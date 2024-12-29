@@ -10,7 +10,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   const titleStyle = "text-2xl font-bold mb-2";
 
   return (
-    <div className=" bg-slate-200 rounded-lg p-2" key={project.id}>
+    <div className=" bg-white rounded-xs p-2" key={project.id}>
       <h1 className={`${titleStyle}`}>{project.title}</h1>
       <a className="relative block bg-gray-900 group" href="##">
         <img
@@ -31,7 +31,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                 <a href={project.link} target="_blank">
                   <button
                     className="px-4 py-2 text-sm mt-2
-                                            text-white bg-green-600 rounded-lg"
+                                            text-white bg-black rounded-lg"
                   >
                     View project
                   </button>

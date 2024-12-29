@@ -10,11 +10,11 @@ export default function Navbar() {
       <Link href="/#experience">
         <h1 className="">{`Experience`}</h1>
       </Link>
-      <Link href="/#project">
-        <h1 className="">{`Project`}</h1>
-      </Link>
       <Link href="/#skills">
         <h1 className="">{`Skills`}</h1>
+      </Link>
+      <Link href="/#project">
+        <h1 className="">{`Project`}</h1>
       </Link>
     </div>
   );
