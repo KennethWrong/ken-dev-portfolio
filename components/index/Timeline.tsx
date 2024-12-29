@@ -150,7 +150,7 @@ export default function Timeline() {
               {timelineItem.redirectionLink ? (
                 <a
                   href={timelineItem.redirectionLink}
-                  className="text-gray-500 hover:text-gray-400 hover:cursor-pointer"
+                  className="text-gray-500 hover:text-gray-400 hover:cursor-pointer underline"
                 >
                   Learn more
                 </a>
