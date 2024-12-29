@@ -201,7 +201,6 @@ export default function Timeline() {
           </div>
         </div>
       </main>
-      <hr className="my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-700 to-transparent opacity-25 dark:opacity-100" />
     </div>
   );
 }

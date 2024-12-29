@@ -77,7 +77,9 @@ export default function Home() {
     <div className="bg-gradient-to-br from-slate-50 via-neutral-50 to-neutral-50">
       <Intro />
       <Timeline />
+      <div className="mt-5"></div>
       <TextMarquee items={marqueeItems} font={"font-[Teko]"} />
+      <div className="mt-5"></div>
       <Skills />
       <div
         id="intro"

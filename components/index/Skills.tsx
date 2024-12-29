@@ -84,6 +84,15 @@ export default function Skills() {
       iconSrc:
         "https://upload.wikimedia.org/wikipedia/commons/3/3b/Grafana_icon.svg",
     },
+    {
+      iconName: "Elastic Search",
+      iconSrc: "https://cdn.worldvectorlogo.com/logos/elasticsearch.svg",
+    },
+    {
+      iconName: "Kibana",
+      iconSrc:
+        "https://static-00.iconduck.com/assets.00/kibana-icon-1537x2048-476gnmfc.png",
+    },
   ];
 
   const frontendTechIcons: IconStruct[] = [
@@ -107,28 +116,46 @@ export default function Skills() {
       iconSrc:
         "https://static-00.iconduck.com/assets.00/typescript-icon-icon-1024x1024-vh3pfez8.png",
     },
+    {
+      iconName: "Tailwind CSS",
+      iconSrc: "https://blog.paillaugue.fr/icons/TailwindCSS-Light.svg",
+    },
   ];
 
   const toolsTechIcons: IconStruct[] = [
     {
       iconName: "VS Code",
       iconSrc:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png",
     },
     {
       iconName: "Git",
       iconSrc:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/2048px-Git_icon.svg.png",
     },
     {
       iconName: "Linux",
       iconSrc:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg",
+        "https://image.similarpng.com/very-thumbnail/2021/09/Linux-icon-design-on-transparent-background-PNG.png",
     },
     {
       iconName: "ChatGPT",
+      iconSrc: "https://img.icons8.com/?size=512&id=u9JE2GppVZoD&format=png",
+    },
+    {
+      iconName: "Postman",
       iconSrc:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg",
+        "https://user-images.githubusercontent.com/7853266/44114706-9c72dd08-9fd1-11e8-8d9d-6d9d651c75ad.png",
+    },
+    {
+      iconName: "VIM",
+      iconSrc:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Icon-Vim.svg/2048px-Icon-Vim.svg.png",
+    },
+    {
+      iconName: "Jenkins",
+      iconSrc:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Jenkins_logo.svg/1483px-Jenkins_logo.svg.png",
     },
   ];
 
@@ -148,7 +175,7 @@ export default function Skills() {
 
   return (
     <div className="p-5 flex flex-col w-full mb-10" id={"skills"}>
-      <h1 className="font-bold text-3xl mb-5 text-center lg:text-start lg:self-start">
+      <h1 className="font-bold text-3xl mb-7 text-center lg:text-start lg:self-start">
         Technologies
       </h1>
       <div>
@@ -165,6 +192,14 @@ export default function Skills() {
         </h1>
         <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-4 gap-y-4 gap-x-2 items-center justify-evenly w-full">
           {frontendTechIcons.map((icon, index) => renderIcon(icon, index))}
+        </div>
+      </div>
+      <div className="mt-10">
+        <h1 className="font-bold text-xl mb-4 text-center lg:text-start">
+          Tools
+        </h1>
+        <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-4 gap-y-4 gap-x-2 items-center justify-evenly w-full">
+          {toolsTechIcons.map((icon, index) => renderIcon(icon, index))}
         </div>
       </div>
     </div>
