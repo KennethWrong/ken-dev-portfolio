@@ -53,8 +53,8 @@ const companyTimelineList: TimelineItem[] = [
   {
     companyName: "TikTok",
     positionName: "Software Engineer",
-    employmentType: "Full-Time",
-    location: "NY,US",
+    employmentType: "Internship",
+    location: "MV,US",
     contents: [
       "I was working in the Content Creation and Consumption team within TikTok, working on features related to user contention generation. My intern project included migrating several large repositories, writing unit tests, integration tests to make sure the integration was successful.",
       'I also played around with serverless functions, async messages, queues and also the internal cloud CI/CD infrastructure. I also volunteered to work on an internal "pet project" tool in the company to keep communications active during COVID.',
