@@ -174,7 +174,7 @@ export default function Skills() {
   };
 
   return (
-    <div className="p-5 flex flex-col w-full mb-10" id={"skills"}>
+    <div className="p-5 flex flex-col w-full mb-10">
       <h1 className="font-bold text-3xl mb-7 text-center lg:text-start lg:self-start">
         Technologies
       </h1>
