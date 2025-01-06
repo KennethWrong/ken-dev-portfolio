@@ -81,7 +81,9 @@ export default function Home() {
       <div className="mt-5"></div>
       <TextMarquee items={marqueeItems} font={"font-[Teko]"} />
       <div className="mt-5"></div>
-      <RecentBlogs />
+      <div className="p-6">
+        <RecentBlogs />
+      </div>
       <div className="mt-5"></div>
       <Skills />
       <div

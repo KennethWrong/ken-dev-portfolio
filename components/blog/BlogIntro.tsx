@@ -1,3 +1,4 @@
+import { CustomH1, CustomP } from "@/app/blogs/[id]/page";
 import BlogTag from "./BlogTag";
 import Image from "next/image";
 
@@ -12,6 +13,7 @@ export type BlogMetadata = {
   tag: string;
 };
 
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 export const NewBlogMetadata = (frontMatter: any) => {
   return {
     slug: frontMatter.slug,
@@ -27,13 +29,14 @@ export const NewBlogMetadata = (frontMatter: any) => {
 
 export default function BlogIntro({ metadata }: { metadata: BlogMetadata }) {
   return (
-    <div className="flex flex-col leading-loose items-center gap-y-3">
+    <div className="flex flex-col items-center gap-y-3 mt-20">
       <img
         src={metadata.thumbnail}
         alt={metadata.title}
-        className="h-96 w-10/12 object-contain self-center"
+        className="w-full h-auto max-h-96 object-contain self-center"
       />
-      <h1 className="text-xl md:text-5xl font-bold mt-5">{metadata.title}</h1>
+
+      {<CustomH1>{metadata.title}</CustomH1>}
       <div className="grid grid-cols-3 items-center gap-x-4 text-sm md:text-lg mt-2 text-gray-500 text-center">
         <div className="flex flex-row items-center gap-x-2">
           <Image
@@ -43,12 +46,16 @@ export default function BlogIntro({ metadata }: { metadata: BlogMetadata }) {
             alt="author's face"
             className="rounded-full object-cover md:w-10 md:h-10 w-6 h-6"
           />
-          <p className="font-bold">{metadata.author}</p>
+          <p className="font-bold text-2xs md:text-lg">{metadata.author}</p>
         </div>
-        <p className="border-l-2 border-r-2 font-bold">{metadata.date}</p>
-        <p className="font-bold">{metadata.readTime} min read</p>
+        <p className="border-l-2 border-r-2 font-bold text-2xs md:text-lg">
+          {metadata.date}
+        </p>
+        <p className="font-bold text-2xs md:text-lg">
+          {metadata.readTime} min read
+        </p>
       </div>
-      <p>{metadata.description}</p>
+      <CustomP>{metadata.description}</CustomP>
       <BlogTag tag={metadata.tag} />
       <hr className="w-full my-4" />
     </div>

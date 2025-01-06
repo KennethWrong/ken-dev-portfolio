@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { BlogMetadata } from "./BlogIntro";
-import Image from "next/image";
 import BlogTag from "./BlogTag";
 
 export default function BlogCard({ blog }: { blog: BlogMetadata }) {

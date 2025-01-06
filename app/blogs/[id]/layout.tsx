@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import RecentBlogs from "@/components/blog/RecentBlogs";
 
 export const metadata: Metadata = {
   title: "Kenneth Wong Hon Nam | Software Engineer",
@@ -12,11 +10,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <>
-      <Navbar />
-      {children}
-      <RecentBlogs />
-    </>
-  );
+  return <>{children}</>;
 }
