@@ -1,4 +1,4 @@
-import { GetBlogs } from "@/app/blogs/page";
+import { GetBlogs } from "./BlogComponents";
 import Link from "next/link";
 import BlogCard from "./BlogCard";
 import { BlogMetadata } from "./BlogIntro";

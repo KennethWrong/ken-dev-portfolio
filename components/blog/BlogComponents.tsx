@@ -1,3 +1,7 @@
+import fs from "fs";
+import matter from "gray-matter";
+import { NewBlogMetadata } from "./BlogIntro";
+
 const spaceBetween = "mb-2 md:mb-3";
 
 export function CustomH1({ children }: { children: React.ReactNode }) {
@@ -87,4 +91,16 @@ export function CustomImg({
       className=" w-10/12 md:max-w-3xl h-auto my-4 self-center"
     />
   );
+}
+
+export async function GetBlogs() {
+  let files = fs.readdirSync("content/blogs"); // get the files
+  files = files.filter((file) => file.split(".")[1] == "mdx"); // filter only the mdx files
+  const posts = files.map((file) => {
+    // for each file extract the front matter and the slug
+    const fileData = fs.readFileSync(`content/blogs/${file}`, "utf-8");
+    const { data } = matter(fileData);
+    return NewBlogMetadata(data);
+  });
+  return posts;
 }
