@@ -16,7 +16,7 @@ export default function BlogContactCard() {
           LinkedIn{" "}
         </a>
         .{" "}
-        {`I'm always up for a chat/ or to work on exciting projects
+        {`I'm always up for a chat/or to work on exciting projects
         together!`}
       </p>
     </div>
