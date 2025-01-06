@@ -18,6 +18,7 @@ import {
   CustomUL,
   CustomP,
 } from "@/components/blog/BlogComponents";
+import path from "path";
 
 function GetMDXComponent() {
   const overrideComponents = {
@@ -41,7 +42,8 @@ export default async function Page({
   params: Promise<{ id: string }>;
 }) {
   const slug = (await params).id;
-  const fileData = fs.readFileSync(`content/blogs/${slug}.mdx`); // get the file data
+  const directory = path.join(process.cwd(), "content/blogs", `${slug}.mdx`);
+  const fileData = fs.readFileSync(directory); // get the file data
   const { data, content } = matter(fileData); // extract the front matter and the content
 
   const overrideComponents = GetMDXComponent();

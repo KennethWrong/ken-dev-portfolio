@@ -1,6 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 import { NewBlogMetadata } from "./BlogIntro";
+import path from "path";
 
 const spaceBetween = "mb-2 md:mb-3";
 
@@ -94,7 +95,8 @@ export function CustomImg({
 }
 
 export async function GetBlogs() {
-  let files = fs.readdirSync("content/blogs"); // get the files
+  const directory = path.join(process.cwd(), "content/blogs");
+  let files = fs.readdirSync(directory); // get the files
   files = files.filter((file) => file.split(".")[1] == "mdx"); // filter only the mdx files
   const posts = files.map((file) => {
     // for each file extract the front matter and the slug
