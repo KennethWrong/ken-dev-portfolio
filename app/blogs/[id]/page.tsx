@@ -66,9 +66,3 @@ export default async function Page({
     </div>
   );
 }
-
-export function generateStaticParams() {
-  return [{ slug: "welcome" }, { slug: "about" }];
-}
-
-export const dynamicParams = false;
