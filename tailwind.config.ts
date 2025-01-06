@@ -61,6 +61,8 @@ export default {
 		'225': '225',
 		},
 		fontSize: {
+		'2xs': '0.625rem',
+		'3xs': '0.5rem',
 		'10xl': '20.87rem',
 		},
 		fontFamily: {
@@ -70,5 +72,5 @@ export default {
 		
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require('@tailwindcss/typography')],
 } satisfies Config;

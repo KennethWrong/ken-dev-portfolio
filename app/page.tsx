@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Timeline from "../components/index/Timeline";
 import Projects from "../components/index/Projects";
 import TextMarquee from "@/components/TextMarquee";
+import RecentBlogs from "@/components/blog/RecentBlogs";
 
 export default function Home() {
   const marqueeItems = [
@@ -79,6 +80,8 @@ export default function Home() {
       <Timeline />
       <div className="mt-5"></div>
       <TextMarquee items={marqueeItems} font={"font-[Teko]"} />
+      <div className="mt-5"></div>
+      <RecentBlogs />
       <div className="mt-5"></div>
       <Skills />
       <div

@@ -1,0 +1,45 @@
+---
+slug: 1
+author: "Kenneth Wong"
+date: "2025-01-05"
+title: "How I built this website"
+description: "A detailed overview of the technologies and process used to build my personal website."
+readTime:  10
+tag: "engineering"
+thumbnail: "https://hbcfj3ve6zsq0764.public.blob.vercel-storage.com/Screenshot%202025-01-05%20at%205.15.42%E2%80%AFpm-kmdBxURIL3MAB44sN8aJ8hPvzFEoCW.png"
+---
+## Why am I rebuilding my portfolio?
+I've always wanted to build a personal blog to write down my thoughts and learnings. For the past couple of years I have been using [instagram](https://www.instagram.com/werunm.env/) to jot down notes and share my thoughts.
+
+However, I wanted a more professional platform to share my thoughts and learnings. After helping Avita and Vaio build out their websites, I decided to strike the iron when it's hot and put my Next.JS skills to the test and build out my personal portfolio.
+
+## Designs & Inspirations
+My SO other insisted that I credit her for her ingenuity and assistance on the design on my portfolio, hence this section. My SO suggested the text Marquee and the parallax effect of the landing page, which closely mimics the one on [Zendeya's website](https://www.zendaya.com/).
+
+## How did I build this website?
+This entire project is built by Next.JS, Tailwindcss. For the deployment platform,  I used Vercel as that is the same platform I used for the Avita and Vaio websites. There is no backend involved as I wanted to keep the website as simple as possible. 
+
+I am using a S3 storage provided by Vercel to store MDX images such that the pathing is not a relative file path, as a relative file path is brittle and does not scale well. Reasons to separate image files from service instance is the following:
+- **CDN support**: By storing images in a separate storage, I can leverage on Vercel's CDN to serve images faster.
+- **Smaller deployment image sizes**: By storing images in a separate storage, I can reduce the size of the deployment image, as storing images bloats the deployment image.
+
+
+## Why Next.js and Vercel?
+I am a backend engineer and having to write frontend code is not a pleasant experience for me (though sometimes it's fun). Therefore I wanted a very simple, active and well-maintained framework, which is why I chose Next.js. And by using Next.js, it was a no-brainer to choose Vercel as they run great with one another.
+![Image of git CI/CD](https://hbcfj3ve6zsq0764.public.blob.vercel-storage.com/Screenshot%202025-01-05%20at%205.42.08%E2%80%AFpm-VWgh56wLkUlx10nyky6GaSAlH4zVzH.png)
+
+Moreover, Vercel provides automated CI/CD for both dev env and prod env as well as observability metrics like site visits, errors etc...
+
+## Difficulties faced
+Biggest difficulty faced during the development of the website was making the blog work. For the longest time I didn't know about MDX and was thinking of ways to abstract out and write out my own markdown classes, syntax, parser... However, after some investigation I found that Next.JS has markdown support using MDX and from then on I started researching on how to use MDX to create my blogs.
+
+## Next Steps
+As for the future I would like to include more features into this websites, such as:
+- **Animations**: Rendering animations for different divs of the website
+- **Richer Markdown**: Richer markdown support for cooler markdowns
+- **Datastore**: DB to store markdown files instead of doing CPU intensive file scans.
+
+## Contact
+Feel free to reach out to me via [email](mailto:your.email@example.com) or connect with me on [LinkedIn](https://linkedin.com/in/yourprofile).
+
+Thank you for visiting my development portfolio!

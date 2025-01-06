@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Project } from "../projects/ProjectCard";
 import TextImageRow from "../TextImageRow";
 
@@ -70,7 +71,7 @@ function Projects() {
             {" "}
             Projects
             <span className="text-xs text-gray-500 ml-2 hover:cursor-pointer hover:text-gray-400">
-              <a href="/projects/">{" View All"}</a>
+              <Link href="/projects/">{" View All"}</Link>
             </span>
           </h1>
           <div className="flex flex-col items-center">
