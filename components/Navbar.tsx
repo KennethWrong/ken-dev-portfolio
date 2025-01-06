@@ -16,6 +16,9 @@ export default function Navbar() {
       <Link href="/#project">
         <h1 className="">{`Project`}</h1>
       </Link>
+      <Link href="/blogs">
+        <h1 className="">{`Blog`}</h1>
+      </Link>
     </div>
   );
 }
