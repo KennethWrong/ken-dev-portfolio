@@ -1,4 +1,4 @@
-import { CustomH1 } from "@/app/blogs/[id]/page";
+import { CustomH1 } from "./BlogComponents";
 
 export default function BlogContactCard() {
   return (

@@ -1,4 +1,4 @@
-import { CustomH1, CustomP } from "@/app/blogs/[id]/page";
+import { CustomH1, CustomP } from "./BlogComponents";
 import BlogTag from "./BlogTag";
 import Image from "next/image";
 
