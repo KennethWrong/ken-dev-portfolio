@@ -33,6 +33,16 @@ export function CustomH3({ children }: { children: React.ReactNode }) {
   );
 }
 
+export function CustomH4({ children }: { children: React.ReactNode }) {
+  return (
+    <h3
+      className={`text-xs md:text-xl text-black font-bold ${spaceBetween} leading-relaxed`}
+    >
+      {children}
+    </h3>
+  );
+}
+
 export function CustomP({ children }: { children: React.ReactNode }) {
   return (
     <p
@@ -89,7 +99,7 @@ export function CustomImg({
     <img
       src={src}
       alt={alt}
-      className=" w-10/12 md:max-w-3xl h-auto my-4 self-center"
+      className=" w-10/12 md:max-w-3xl max-h-80 my-4 object-contain place-self-center"
     />
   );
 }
@@ -98,11 +108,13 @@ export async function GetBlogs() {
   const directory = path.join(process.cwd(), "content/blogs");
   let files = fs.readdirSync(directory); // get the files
   files = files.filter((file) => file.split(".")[1] == "mdx"); // filter only the mdx files
-  const posts = files.map((file) => {
+  let posts = files.map((file) => {
     // for each file extract the front matter and the slug
     const fileData = fs.readFileSync(`content/blogs/${file}`, "utf-8");
     const { data } = matter(fileData);
     return NewBlogMetadata(data);
   });
+
+  posts = posts.sort((a, b) => b.slug - a.slug);
   return posts;
 }

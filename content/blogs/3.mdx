@@ -1,0 +1,41 @@
+---
+slug: 3
+author: "Kenneth Wong"
+date: "2025-01-06"
+title: "Fundamentals of Data Engineering"
+description: "A recap of of notes I have taken on this book. This is subjected to change as I am still reading the book"
+readTime:  20
+tag: Book
+thumbnail: https://m.media-amazon.com/images/I/81+oMD7Lm7L._AC_UF1000,1000_QL80_.jpg
+---
+
+I did not take many notes from Chapter 1 - 7 as I was casually reading the book and I was already fairly familiar with the content already. So this recap will start from Chapter 8.
+
+
+## <ins> Chapter 8: Queries, Modelling and Transformations </ins>
+
+### Ways to optimize Queries
+- **Pre-join tables**: Materialize/cache joins that are frequently used to reduce the number of joins per query. A common use are **CTEs (Common Table Expressions)**, they are temporary tables instead of nested subqueries.
+- **Avoid full table scans**: Prune queries by having conditions and only selecting columns that are required. This reduces the amount of data that needs to be scanned.
+
+**Enrichment** - Combining a data store with a stream to enrich messages that are received. E.g If a message consists of *product_id* and *user_id*, and we want to add product and user address information. We would connect the relevant datastores to the stream to retrieve these informations.
+
+### Distributed Joins
+
+#### Broadcast Joins
+![Illustration of Broadcast Join](https://miro.medium.com/v2/resize:fit:1200/1*CGdKXWGQ1xtB0Lbq7gdI1g.png)
+When there is a big size difference between 2 tables where size_of(table A) \<\< size_of(table B), we can store table A in each individual node of the cluster and have table B be shared amongst all nodes. Then, each node can pull the relevant parts of table B to perform the join.
+
+This only works if table A is small enough to fit in memory of the node, if not, we would have to look for an alternative like **shuffle hash join**. Instead of sending 2 tables across the network, each node only broadcasts the smaller table to be joined, saving data egress costs (in cloud).
+
+#### Shuffle Hash Join
+![Illustration of Shuffle Hash Join](https://miro.medium.com/v2/resize:fit:515/1*9b4I_u3fcYnKyu2cIxWtsg.png)
+So this method is used when neither tables are small enough to be stored in memory. This join method is more computationally expensive compared to broadcast join due to the shuffling.
+1. Each node has a separate partitions of both tables.
+2. Then a hash function is applied to the join key and data is shuffled to the correct node to ensure the right rows are placed in the right node for processing.
+> Skewed join keys could occur (when a key occurs a lot more often than another key). This would lead to some nodes having significantly more data than other nodes.
+
+#### ETL to ELT
+Traditionally, data is extracted, transformed and loaded (ETL) into a data warehouse. However, with the increase in processing performance and capacity of data warehouses, most companies opt to dump data into the data warehouse and then transforming it there (ELT).
+
+The cons of performing ELT instead of ETL is that a lot of companies simply dump their data without using it ever again (WORN - Write Once Read Never). The pros of ETL is that it forces businesses to transform their data to something useful before dumping it.

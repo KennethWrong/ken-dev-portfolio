@@ -17,6 +17,7 @@ import {
   CustomOL,
   CustomUL,
   CustomP,
+  CustomH4,
 } from "@/components/blog/BlogComponents";
 import path from "path";
 
@@ -25,6 +26,7 @@ function GetMDXComponent() {
     h1: CustomH1,
     h2: CustomH2,
     h3: CustomH3,
+    h4: CustomH4,
     p: CustomP,
     a: CustomA,
     ol: CustomOL,
