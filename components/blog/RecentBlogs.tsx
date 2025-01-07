@@ -20,8 +20,8 @@ export default async function RecentBlogs() {
           </span>
         </h1>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-        {blogs.slice(0, 3).map((blog, key) => {
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2">
+        {blogs.slice(0, 2).map((blog, key) => {
           return <BlogCard blog={blog} key={key} />;
         })}
       </div>

@@ -6,10 +6,13 @@ export default function BlogCard({ blog }: { blog: BlogMetadata }) {
   return (
     <Link
       href={`/blogs/${blog.slug}`}
-      className="flex flex-col leading-relaxed group bg-slate-50 items-center rounded-xl"
+      className="flex flex-col leading-relaxed group bg-slate-50 items-center rounded-xl p-6"
     >
-      <img src={blog.thumbnail} className="h-auto w-full object-contain" />
-      <div className="p-6 flex-col items-center justify-center">
+      <img
+        src={blog.thumbnail}
+        className="w-full object-contain md:max-h-40 max-h-52 mb-4"
+      />
+      <div className="flex-col items-center justify-center">
         <BlogTag tag={blog.tag} center={true} />
         <h1 className="text-lg md:text-2xl font-bold mb-2">{blog.title}</h1>
         <p className="text-xs md:text-sm mb-2">{blog.description}</p>

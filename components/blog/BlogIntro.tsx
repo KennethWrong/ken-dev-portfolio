@@ -33,7 +33,7 @@ export default function BlogIntro({ metadata }: { metadata: BlogMetadata }) {
       <img
         src={metadata.thumbnail}
         alt={metadata.title}
-        className="w-full h-auto max-h-96 object-contain self-center"
+        className="w-full h-auto max-h-96 object-contain self-center mb-2"
       />
 
       {<CustomH1>{metadata.title}</CustomH1>}
