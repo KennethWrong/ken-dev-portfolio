@@ -14,6 +14,16 @@ type TimelineItem = {
 
 const companyTimelineList: TimelineItem[] = [
   {
+    companyName: "TikTok",
+    positionName: "Software Engineer",
+    employmentType: "Full-Time",
+    location: "NY,US",
+    contents: ["Returning to TikTok to work Fulltime."],
+    imageSrc: "/images/tiktokLogo.png",
+    redirectionLink: "/experiences/tiktok_2024",
+    date: "JUL 2023 - pres",
+  },
+  {
     companyName: "Vaio",
     positionName: "Software Engineer",
     employmentType: "Contract",
@@ -24,19 +34,8 @@ const companyTimelineList: TimelineItem[] = [
     ],
     imageSrc: "/images/vaioLogo.png",
     redirectionLink: "/experiences/vaio_2024",
-    date: "OCT 2024 - pres",
+    date: "JUL 2024",
   },
-  {
-    companyName: "TikTok",
-    positionName: "Software Engineer",
-    employmentType: "Full-Time",
-    location: "NY,US",
-    contents: ["Returning to TikTok to work Fulltime."],
-    imageSrc: "/images/tiktokLogo.png",
-    redirectionLink: "/experiences/tiktok_2024",
-    date: "JUL 2023 - pres",
-  },
-
   {
     companyName: "Merck",
     positionName: "Software Engineer",
@@ -49,7 +48,6 @@ const companyTimelineList: TimelineItem[] = [
     imageSrc: "/images/merckLogo.png",
     date: "2021 - 2022",
   },
-
   {
     companyName: "TikTok",
     positionName: "Software Engineer",
@@ -62,7 +60,6 @@ const companyTimelineList: TimelineItem[] = [
     imageSrc: "/images/tiktokLogo.png",
     date: "JUN 2021",
   },
-
   {
     companyName: "Purdue Agriculture",
     positionName: "Software Developer",
@@ -74,7 +71,6 @@ const companyTimelineList: TimelineItem[] = [
     imageSrc: "/images/purdueLogo.png",
     date: "OCT 2021",
   },
-
   {
     companyName: "Alco Holdings Inc.",
     positionName: "Web Developer",
@@ -87,7 +83,6 @@ const companyTimelineList: TimelineItem[] = [
     imageSrc: "/images/alcoLogo.png",
     date: "JUN 2021",
   },
-
   {
     companyName: "Purdue University",
     positionName: "Student",
