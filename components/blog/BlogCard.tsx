@@ -6,7 +6,7 @@ export default function BlogCard({ blog }: { blog: BlogMetadata }) {
   return (
     <Link
       href={`/blogs/${blog.slug}`}
-      className="flex flex-col leading-relaxed group bg-slate-50 items-center rounded-xl p-6"
+      className="flex flex-col leading-relaxed group bg-slate-50 items-center rounded-xl p-6 animate-slideUp"
     >
       <img
         src={blog.thumbnail}
