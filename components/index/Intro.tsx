@@ -15,7 +15,7 @@ function Intro() {
         backgroundImage: "url('images/intro/hk_banner3_md.png')",
       }}
     >
-      <div className="p-3 bg-stone-50 rounded-md border-2 mb-10">
+      <div className="p-3 bg-stone-50 rounded-md border-2 mb-10 animate-slideUp">
         <div className="md:flex md:flex-col lg:justify-around align-middle p-2 items-center mb-12">
           <div className="flex flex-col items-center">
             <img

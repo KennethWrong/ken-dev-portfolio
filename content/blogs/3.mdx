@@ -4,7 +4,7 @@ author: "Kenneth Wong"
 date: "2025-01-06"
 title: "Fundamentals of Data Engineering"
 description: "A recap of of notes I have taken on this book. This is subjected to change as I am still reading the book"
-readTime:  20
+readTime:  10
 tag: Book
 thumbnail: https://m.media-amazon.com/images/I/81+oMD7Lm7L._AC_UF1000,1000_QL80_.jpg
 ---
@@ -18,7 +18,7 @@ I did not take many notes from Chapter 1 - 7 as I was casually reading the book 
 - **Pre-join tables**: Materialize/cache joins that are frequently used to reduce the number of joins per query. A common use are **CTEs (Common Table Expressions)**, they are temporary tables instead of nested subqueries.
 - **Avoid full table scans**: Prune queries by having conditions and only selecting columns that are required. This reduces the amount of data that needs to be scanned.
 
-**Enrichment** - Combining a data store with a stream to enrich messages that are received. E.g If a message consists of *product_id* and *user_id*, and we want to add product and user address information. We would connect the relevant datastores to the stream to retrieve these informations.
+>**Enrichment** - Combining a data store with a stream to enrich messages that are received. E.g If a message consists of *product_id* and *user_id*, and we want to add product and user address information. We would connect the relevant datastores to the stream to retrieve these informations.
 
 ### Distributed Joins
 
@@ -43,3 +43,28 @@ The cons of performing ELT instead of ETL is that a lot of companies simply dump
 
 #### Federated Query
 Federated query is a query across several datastores. Data warehouses can issue federated queries
+
+## <ins> Chapter 9: Transformation </ins>
+There are mainly 3 types of analytics:
+- **Business Analytics** - Using historical and current data find historical trends and to forecast future trends to discover actionable insights. 
+- **Operational Analytics** - Looking for realtime signals. Could be to detect realtime fraud, service monitoring, health-monitoring to perform immediate actions (auto-scale, notify).
+- **Embedded Analytics** - Analytics that are presented to clients to provide insight into their usage of the product (e.g a dashboard to monitor their sleep quality)
+
+>The main difference between business analytics and operational analytics is that business analytics focuses on planning and seeking out actionable insights from data whereas operation analytics look for immediate actions to take.
+
+Embedded analytics has the challenge of having a higher QPS and demand compared to the other 2 analytics as all clients can query for these analytics. Therefore the availability and performance of embedded analytics is important.
+
+
+## <ins> Chapter 10: Security </ins>
+FTP is generally unsafe and should be avoided in public networks as it is prone to MITM attacks, where attackers can snoop through file transfers.
+
+Whitelisting IP addresses are important for restricting access to your service.
+
+Cloud is considered more safe compared to on-premise hardware due to the zero-trust implementation and that everything on the cloud requires authentication and permission settings. However, on-premise systems like nuclear missles that are completely off-the internet is safer but is still prone to human errors.
+
+## <ins> Conclusion </ins>
+This book was a great read for software engineers to understand the role of data and how involved it actually is in the livlihood of a company, being an undercurrent in all stages of the company. 
+
+I have learnt a lot about current trends in data engineering, tools used and reasoning behind these tools. Short coming of certain trends that brought forth new trends. An example would be the move from batch processing to real-time processing, where the author predicts that most data stacks in the future will become a "live datastack", where data processing will be personalized to each individual user
+
+I also particularly enjoyed the emphasis the author had on the end-user and their experience with the data. For instance, the author mentioned Operations and Marketing team trying to use the data, and data engineers should provide an intuitive interface for them in order to make their work more efficient as suppose to you having to send them an email of an excel file every week. Not only do data products support businesses, it also support other organizations within the company.
