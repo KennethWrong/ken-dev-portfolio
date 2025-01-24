@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type IconStruct = {
   iconSrc: string;
   iconName: string;
@@ -7,166 +9,146 @@ export default function Skills() {
   const backendTechIcons: IconStruct[] = [
     {
       iconName: "GO",
-      iconSrc:
-        "https://upload.wikimedia.org/wikipedia/commons/0/05/Go_Logo_Blue.svg",
+      iconSrc: "/images/skills/goLogo.svg",
     },
     {
       iconName: "Python",
-      iconSrc:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg",
+      iconSrc: "/images/skills/pythonLogo.svg",
     },
     {
       iconName: "MongoDB",
-      iconSrc:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-plain-wordmark.svg",
+      iconSrc: "/images/skills/mongodbLogo.svg",
     },
     {
       iconName: "NodeJS",
-      iconSrc:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain-wordmark.svg",
+      iconSrc: "/images/skills/nodejsLogo.svg",
     },
     {
       iconName: "Flask",
-      iconSrc:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original-wordmark.svg",
+      iconSrc: "/images/skills/flaskLogo.svg",
     },
     {
       iconName: "Fast API",
-      iconSrc: "https://files.svgcdn.io/logos/fastapi.png",
+      iconSrc: "/images/skills/fastapiLogo.png",
     },
     {
       iconName: "MySQL",
-      iconSrc:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-plain-wordmark.svg",
-    },
-    {
-      iconName: "MySQL",
-      iconSrc: "https://www.svgrepo.com/show/303251/mysql-logo.svg",
+      iconSrc: "/images/skills/mysqlLogo.svg",
     },
     {
       iconName: "PostGresSQL",
-      iconSrc:
-        "https://static-00.iconduck.com/assets.00/postgresql-plain-wordmark-icon-2048x2042-up54u54l.png",
+      iconSrc: "/images/skills/postgresLogo.png",
     },
     {
       iconName: "Cassandra",
-      iconSrc: "https://www.svgrepo.com/show/353540/cassandra.svg",
+      iconSrc: "/images/skills/cassandraLogo.svg",
     },
     {
       iconName: "Redis",
-      iconSrc: "https://www.svgrepo.com/show/303460/redis-logo.svg",
+      iconSrc: "/images/skills/redisLogo.svg",
     },
     {
       iconName: "AWS",
-      iconSrc:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/2560px-Amazon_Web_Services_Logo.svg.png",
+      iconSrc: "/images/skills/awsLogo.png",
     },
     {
       iconName: "Kafka",
-      iconSrc: "https://www.svgrepo.com/show/353950/kafka.svg",
+      iconSrc: "/images/skills/kafkaLogo.svg",
     },
     {
       iconName: "Apache Hive",
-      iconSrc:
-        "https://upload.wikimedia.org/wikipedia/commons/b/bb/Apache_Hive_logo.svg",
+      iconSrc: "/images/skills/hiveLogo.svg",
     },
     {
       iconName: "Docker",
-      iconSrc: "https://www.svgrepo.com/show/331370/docker.svg",
+      iconSrc: "/images/skills/dockerLogo.svg",
     },
     {
       iconName: "Kubernetes",
-      iconSrc:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Kubernetes_logo_without_workmark.svg/1200px-Kubernetes_logo_without_workmark.svg.png",
+      iconSrc: "/images/skills/kubernetesLogo.png",
     },
     {
       iconName: "Grafana",
-      iconSrc:
-        "https://upload.wikimedia.org/wikipedia/commons/3/3b/Grafana_icon.svg",
+      iconSrc: "/images/skills/grafanaLogo.svg",
     },
     {
       iconName: "Elastic Search",
-      iconSrc: "https://cdn.worldvectorlogo.com/logos/elasticsearch.svg",
+      iconSrc: "/images/skills/esLogo.svg",
     },
     {
       iconName: "Kibana",
-      iconSrc:
-        "https://static-00.iconduck.com/assets.00/kibana-icon-1537x2048-476gnmfc.png",
+      iconSrc: "/images/skills/kibanaLogo.png",
     },
   ];
 
   const frontendTechIcons: IconStruct[] = [
     {
       iconName: "React",
-      iconSrc:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg",
+      iconSrc: "/images/skills/reactLogo.svg",
     },
     {
       iconName: "Next JS",
-      iconSrc:
-        "https://static-00.iconduck.com/assets.00/next-js-icon-2048x2048-5dqjgeku.png",
+      iconSrc: "/images/skills/nextjsLogo.png",
     },
     {
       iconName: "Javascript",
-      iconSrc:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg",
+      iconSrc: "/images/skills/jsLogo.svg",
     },
     {
       iconName: "Typescript",
-      iconSrc:
-        "https://static-00.iconduck.com/assets.00/typescript-icon-icon-1024x1024-vh3pfez8.png",
+      iconSrc: "/images/skills/tsLogo.png",
     },
     {
       iconName: "Tailwind CSS",
-      iconSrc: "https://blog.paillaugue.fr/icons/TailwindCSS-Light.svg",
+      iconSrc: "/images/skills/tailwindLogo.svg",
     },
   ];
 
   const toolsTechIcons: IconStruct[] = [
     {
       iconName: "VS Code",
-      iconSrc:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png",
+      iconSrc: "/images/skills/vscodeLogo.png",
     },
     {
       iconName: "Git",
-      iconSrc:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/2048px-Git_icon.svg.png",
+      iconSrc: "/images/skills/gitLogo.png",
     },
     {
       iconName: "Linux",
-      iconSrc:
-        "https://image.similarpng.com/very-thumbnail/2021/09/Linux-icon-design-on-transparent-background-PNG.png",
+      iconSrc: "/images/skills/linuxLogo.png",
     },
     {
       iconName: "ChatGPT",
-      iconSrc: "https://img.icons8.com/?size=512&id=u9JE2GppVZoD&format=png",
+      iconSrc: "/images/skills/gptLogo.png",
     },
     {
       iconName: "Postman",
-      iconSrc:
-        "https://user-images.githubusercontent.com/7853266/44114706-9c72dd08-9fd1-11e8-8d9d-6d9d651c75ad.png",
+      iconSrc: "/images/skills/postmanLogo.png",
     },
     {
       iconName: "VIM",
-      iconSrc:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Icon-Vim.svg/2048px-Icon-Vim.svg.png",
+      iconSrc: "/images/skills/vimLogo.png",
     },
     {
       iconName: "Jenkins",
-      iconSrc:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Jenkins_logo.svg/1483px-Jenkins_logo.svg.png",
+      iconSrc: "/images/skills/jenkinsLogo.png",
     },
   ];
 
   const renderIcon = (icon: IconStruct, index: number) => {
     return (
       <div
-        className="flex flex-row items-center justify-start bg-slate-50 border-2 w-full h-full rounded-md"
+        className="flex flex-row items-center justify-start bg-slate-50 border-2 w-full h-full rounded-md transform transition-transform duration-300 hover:scale-105"
         key={index}
       >
         <div key={index} className="flex flex-col items-center p-4">
-          <img src={icon.iconSrc} className="h-auto w-10 self-center" />
+          <Image
+            height={200}
+            width={200}
+            alt={`${icon.iconName} icon`}
+            src={icon.iconSrc}
+            className="h-auto w-10 self-center"
+          />
         </div>
         <p className="font-bold">{icon.iconName}</p>
       </div>

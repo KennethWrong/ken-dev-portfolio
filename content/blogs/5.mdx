@@ -1,0 +1,50 @@
+---
+slug: 5
+author: "Kenneth Wong"
+date: "2025-01-24"
+title: "Head First Design Patterns"
+description: "Notes on reading Head First Design Patterns in an attempt to learn design patterns and to improve my coding skills."
+readTime:  5
+tag: "engineering"
+thumbnail: "https://m.media-amazon.com/images/I/91quawUTiVL._AC_UF1000,1000_QL80_.jpg"
+---
+
+I'm using design patterns as a way to learn more about Java and other OO P languages to better understanding the semantics, keywords and behaviours. So I am going to write about design patterns as well as OOP principles
+
+## Chapter 1: The strategy pattern
+![strategy pattern displayed](https://upload.wikimedia.org/wikipedia/commons/3/39/Strategy_Pattern_in_UML.png)
+
+**The Strategy pattern** - Defines a family of algorithms, encapsulates each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
+
+Identify the part of your application that constantly changes and separate it from the parts that stay the same.
+
+### Components
+**Context** - Holds an abstract strategy field and calls the function that is exposed.
+
+**Strategy** - An abstract class with a function that will be implemented by the concrete implementation.
+
+**Concrete Strategy** - A class that is a concrete implementation of stragey abstract class.
+
+Design around interface, not implementation. A strong emphasis on flexibility and change as we can hot swap the stragey within the context with other concrete strategies.
+
+![implementation of strategy pattern](https://journaldev.nyc3.cdn.digitaloceanspaces.com/2013/07/Strategy-Pattern.png)
+
+**Abstract Classes**
+- Can have both concrete and abstract methods
+- Can include fields
+- Classes can only inherit 1 abstract class
+- Can’t be instantiated by itself
+>
+
+**Interface**
+- Can only have abstract methods
+- Cannot include fields
+- Classes can inherit multiple interfaces
+- Can’t be instantiated by itself
+>
+
+**Design Principe**
+- Favour composition over inheritance
+- Encapsulate what varies
+- Program to interfaces, not implementations
+>

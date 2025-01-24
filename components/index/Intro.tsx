@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 
 function Intro() {
   const attributeStyle = "mt-3 md:text-xl text-center text-md";
@@ -15,10 +16,12 @@ function Intro() {
         backgroundImage: "url('images/intro/hk_banner3_md.png')",
       }}
     >
-      <div className="p-3 bg-stone-50 rounded-md border-2 mb-10 animate-slideUp">
+      <div className="p-3 bg-stone-50 rounded-md border-2 mb-10 animate-slideUp transform transition-transform duration-300 hover:scale-105">
         <div className="md:flex md:flex-col lg:justify-around align-middle p-2 items-center mb-12">
           <div className="flex flex-col items-center">
-            <img
+            <Image
+              height={4284}
+              width={5712}
               className="object-cover w-96 h-96 m-2 p-2 rounded-full"
               src="/images/face.png"
               alt="Profile image"
@@ -43,10 +46,19 @@ function Intro() {
             </p>
             <div className="flex flex-row justify-center mt-2 mb-2">
               <a href="https://github.com/KennethWrong">
-                <img src="/images/GitHubLogo.png" className={`${logoStyle}`} />
+                <Image
+                  height={200}
+                  width={200}
+                  alt="github logo"
+                  src="/images/githubLogo.png"
+                  className={`${logoStyle}`}
+                />
               </a>
               <a href="https://www.linkedin.com/in/kenneth-wong-hon-nam/">
-                <img
+                <Image
+                  height={200}
+                  width={200}
+                  alt="linkedin logo"
                   src="/images/linkedinLogo.png"
                   className={`${logoStyle}`}
                 />
@@ -55,10 +67,19 @@ function Intro() {
                 onClick={() => setShowEmail(!showEmail)}
                 className="cursor-pointer"
               >
-                <img src="/images/emailLogo.png" className={`${logoStyle}`} />
+                <Image
+                  height={200}
+                  width={200}
+                  alt="email logo"
+                  src="/images/emailLogo.png"
+                  className={`${logoStyle}`}
+                />
               </a>
               <a href="https://www.instagram.com/werunm.env/?hl=en">
-                <img
+                <Image
+                  height={200}
+                  width={200}
+                  alt="instagram logo"
                   src="/images/instagramLogo.png"
                   className={`${logoStyle}`}
                 />
@@ -78,8 +99,6 @@ function Intro() {
             </p>
           </div>
         </div>
-
-        {/* <hr className="h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-700 to-transparent opacity-25 dark:opacity-100" /> */}
       </div>
     </div>
   );
