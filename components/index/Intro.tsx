@@ -16,7 +16,7 @@ function Intro() {
         backgroundImage: "url('images/intro/hk_banner3_md.png')",
       }}
     >
-      <div className="p-3 bg-stone-50 rounded-md border-2 mb-10 animate-slideUp transform transition-transform duration-300 hover:scale-105">
+      <div className="p-3 bg-stone-50 rounded-md border-2 mb-10 animate-slideUp transform transition-transform duration-300 hover:scale-105a">
         <div className="md:flex md:flex-col lg:justify-around align-middle p-2 items-center mb-12">
           <div className="flex flex-col items-center">
             <Image
@@ -50,7 +50,7 @@ function Intro() {
                   height={200}
                   width={200}
                   alt="github logo"
-                  src="/images/githubLogo.png"
+                  src="/images/intro/githubLogo.png"
                   className={`${logoStyle}`}
                 />
               </a>

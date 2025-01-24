@@ -1,4 +1,4 @@
-import { FaLinkedin, FaEnvelope, FaInstagram } from "react-icons/fa";
+import { FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
 import Link from "next/link";
 
 export default function Footer() {
@@ -21,25 +21,29 @@ export default function Footer() {
             </Link>
             <Link
               className="flex flex-row items-center flex-start hover:cursor-pointer hover:text-blue-300"
-              href="https://www.linkedin.com/in/christina-mbuyi/"
+              href="https://www.instagram.com/werunm.env/"
             >
-              <FaEnvelope className="text-2xl md:text-4xl" />
+              <FaInstagram className="text-2xl md:text-4xl" />
             </Link>
             <Link
               className="flex flex-row items-center flex-start hover:cursor-pointer hover:text-blue-300"
-              href="https://www.linkedin.com/in/christina-mbuyi/"
+              href="https://github.com/KennethWrong"
             >
-              <FaInstagram className="text-2xl md:text-4xl" />
+              <FaGithub className="text-2xl md:text-4xl" />
             </Link>
           </div>
         </div>
         <div className="w-full lg:w-1/2 flex flex-col mb-20 items-center justify-center hover:cursor-pointer">
-          <Link
+          {/* <Link
             className="flex flex-col items-center justify-center border-2 border-white w-6/12 h-225 font-bold rounded-lg transform transition-transform duration-300 hover:scale-110"
             href="/blogs"
           >
             <p className="text-lg text-white">Check out my blog</p>
-          </Link>
+          </Link> */}
+          <Link
+            className="flex flex-col items-center justify-center w-6/12 h-225 font-bold rounded-lg transform transition-transform duration-300 hover:scale-110"
+            href="/blogs"
+          ></Link>
         </div>
       </div>
     </footer>
