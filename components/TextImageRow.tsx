@@ -80,7 +80,7 @@ export default function TextImageRow({
         {images.map((image, index) => (
           <div
             key={index}
-            className="flex flex-col items-center text-center w-full lg:w-3/4"
+            className="flex flex-col items-center text-center w-full lg:w-3/4 transform transition-transform duration-300 hover:scale-110"
           >
             <img src={image.imageSrc} className="max-h-96" />
             <p className={`mt-2 ${textColour}`}>{image.caption}</p>

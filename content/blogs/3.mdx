@@ -62,6 +62,28 @@ Whitelisting IP addresses are important for restricting access to your service.
 
 Cloud is considered more safe compared to on-premise hardware due to the zero-trust implementation and that everything on the cloud requires authentication and permission settings. However, on-premise systems like nuclear missles that are completely off-the internet is safer but is still prone to human errors.
 
+## <ins> Appendix </ins>
+
+### Find the right database for OLAP and OLTP
+Depending on the use-case, the database that you choose is important. For instance, you would not use a full-text search database like Elastic Search as a primary database for write traffic (OLTP usecase). This is because with everywrite, elastic search have to re-index, making it slow and computational expensive. A better use case would be a traditional relational, KV store.
+
+You also shouldn't use Column data stores for OLTP as each column is stored in a separate file, so R/W traffic would require accessing each file of each column, incurring high disk I/O. Moreover, depending on the distributed architecture, some systems actually distribute the file read task to each CPU core, making request parallelization infeasible as all CPU cores are busy with 1 request.
+
+### Database Engine
+Database engines govern how data is stored on disk, including physical arrangement (block size, page table, page size...), data store serialization and indexes. This means that access patterns can be affected by the database engine as some physical arrangements might be better suite for sequential reads and others for random reads.
+
+For random R/W, a SSD, memory buffer pool/cache would be better suited due to lower latency.
+
+For sequential R/W, a HDD excels as it read/writes along the disk head over contiguous data blocks. Append-only log storage like LSM trees are also ideal for sequential access patterns.
+
+### Compression
+Compression essentially how we serialize redundant information within an object and reduce the size of it. From what I can gather, it could be encoding words, the more redundant patterns are, the better performing the compression is.
+
+**Lossless Compression** - Lossless compression means compressions where the original can be retrieved from the compressed version. Typically, this would mean that the compression ratio is less than ones of lossy compression as a schema would probably needed to be encoded as well.
+
+When it comes to picking compression algorithms, there is a trade off between the compression ratio and CPU optimization during serialization/deserialization. To achieve better compression ratios, more resource intensive algorithms tend to be needed. However, nowadays where network bandwidths are significantly larger and data storage is cheaper compared to CPUs, it makes more sense to shift our focus on CPU optimization than compression ratio.
+
+
 ## <ins> Conclusion </ins>
 This book was a great read for software engineers to understand the role of data and how involved it actually is in the livlihood of a company, being an undercurrent in all stages of the company. 
 

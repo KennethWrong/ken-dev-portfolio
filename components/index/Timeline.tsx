@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 type TimelineItem = {
   companyName: string;
@@ -114,7 +115,10 @@ export default function Timeline() {
   const renderTimelineItem = (timelineItem: TimelineItem, index: number) => {
     return (
       <div className={`${div1Style} mb-10`} key={index}>
-        <img
+        <Image
+          height={200}
+          width={200}
+          alt={`${timelineItem.companyName} logo`}
           onClick={() => {
             if (timelineItem.redirectionLink) {
               router.push(timelineItem.redirectionLink);
@@ -123,8 +127,8 @@ export default function Timeline() {
           src={timelineItem.imageSrc}
           className={`${logoStyle} ${
             timelineItem.redirectionLink ? redirectionStyle : ""
-          }`}
-        ></img>
+          } transform transition-transform duration-300 hover:scale-110`}
+        />
         <div className="flex flex-row">
           <div>
             <h1 className={`${headingStyle}`}>{timelineItem.companyName}</h1>
