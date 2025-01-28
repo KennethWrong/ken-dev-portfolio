@@ -54,14 +54,15 @@ export default async function Page({
     <div className="items-center p-6 mt-30 md:mt-20 flex flex-col">
       <div className="flex flex-col font-[Raleway] w-full md:w-4/5 lg:w-3/5 lg:max-w-3xl md:max-w-4xl">
         <BlogIntro metadata={NewBlogMetadata(data)} />
-        <ReactMarkdown
-          remarkPlugins={[remarkBreaks]}
-          rehypePlugins={[rehypeRaw]}
-          children={content.replace(/\n/gi, "&nbsp; \n")}
-          components={overrideComponents}
-          className={"flex flex-col"}
-        />
-        <ReactMarkdown />
+        <div id="blog-content">
+          <ReactMarkdown
+            remarkPlugins={[remarkBreaks]}
+            rehypePlugins={[rehypeRaw]}
+            children={content.replace(/\n/gi, "&nbsp; \n")}
+            components={overrideComponents}
+            className={"flex flex-col"}
+          />
+        </div>
         <div className="mt-10"></div>
         <BlogContactCard />
         <div className="mt-10"></div>

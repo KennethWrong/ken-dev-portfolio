@@ -5,9 +5,13 @@ import path from "path";
 
 const spaceBetween = "mb-2 md:mb-3";
 
+const headerColour = "text-black";
+
 export function CustomH1({ children }: { children: React.ReactNode }) {
   return (
-    <h1 className={`text-xl md:text-4xl text-black font-bold leading-relaxed`}>
+    <h1
+      className={`text-xl md:text-4xl ${headerColour} font-bold leading-relaxed`}
+    >
       {children}
     </h1>
   );
@@ -16,7 +20,7 @@ export function CustomH1({ children }: { children: React.ReactNode }) {
 export function CustomH2({ children }: { children: React.ReactNode }) {
   return (
     <h2
-      className={`text-lg md:text-3xl text-black font-bold ${spaceBetween} leading-relaxed`}
+      className={`text-lg md:text-3xl ${headerColour} font-bold ${spaceBetween} leading-relaxed`}
     >
       {children}
     </h2>
@@ -26,7 +30,7 @@ export function CustomH2({ children }: { children: React.ReactNode }) {
 export function CustomH3({ children }: { children: React.ReactNode }) {
   return (
     <h3
-      className={`text-sm md:text-2xl text-black font-bold ${spaceBetween} leading-relaxed`}
+      className={`text-sm md:text-2xl ${headerColour} font-bold ${spaceBetween} leading-relaxed`}
     >
       {children}
     </h3>
@@ -36,7 +40,7 @@ export function CustomH3({ children }: { children: React.ReactNode }) {
 export function CustomH4({ children }: { children: React.ReactNode }) {
   return (
     <h3
-      className={`text-xs md:text-xl text-black font-bold ${spaceBetween} leading-relaxed`}
+      className={`text-xs md:text-xl ${headerColour} font-bold ${spaceBetween} leading-relaxed`}
     >
       {children}
     </h3>
