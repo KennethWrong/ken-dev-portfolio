@@ -29,7 +29,7 @@ export const NewBlogMetadata = (frontMatter: any) => {
 
 export default function BlogIntro({ metadata }: { metadata: BlogMetadata }) {
   return (
-    <div className="flex flex-col items-center gap-y-3 mt-20">
+    <div id="blog-intro" className="flex flex-col items-center gap-y-3 mt-20">
       <img
         src={metadata.thumbnail}
         alt={metadata.title}
