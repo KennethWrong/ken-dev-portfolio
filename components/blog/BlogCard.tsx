@@ -5,6 +5,7 @@ import BlogTag from "./BlogTag";
 export default function BlogCard({ blog }: { blog: BlogMetadata }) {
   return (
     <Link
+      id={"blog-card"}
       href={`/blogs/${blog.slug}`}
       className="flex flex-col leading-relaxed group bg-slate-50 items-center rounded-xl p-6 animate-slideUp transform transition-transform duration-300 hover:scale-105"
     >
