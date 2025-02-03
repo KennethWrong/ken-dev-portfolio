@@ -4,7 +4,7 @@ author: "Kenneth Wong"
 date: "2025-01-24"
 title: "Head First Design Patterns"
 description: "Notes on reading Head First Design Patterns in an attempt to learn design patterns and to improve my coding skills."
-readTime:  5
+readTime:  30
 tag: "engineering"
 thumbnail: "https://m.media-amazon.com/images/I/91quawUTiVL._AC_UF1000,1000_QL80_.jpg"
 ---
@@ -35,16 +35,185 @@ Design around interface, not implementation. A strong emphasis on flexibility an
 - Classes can only inherit 1 abstract class
 - Can’t be instantiated by itself
 >
-
 **Interface**
 - Can only have abstract methods
 - Cannot include fields
 - Classes can inherit multiple interfaces
 - Can’t be instantiated by itself
 >
-
-**Design Principe**
+**Design Principles**
 - Favour composition over inheritance
 - Encapsulate what varies
 - Program to interfaces, not implementations
 >
+**Design-Pattern Ranking**: **S-tier**
+One of the most fundamental and important design principles that emphasize the importance of implementation over inheritance.
+
+## Chapter 2: The Observer Pattern
+![Observer Pattern](https://refactoring.guru/images/patterns/diagrams/observer/structure.png?id=365b7e2b8fbecc8948f34b9f8f16f33c)
+
+**The Observer Pattern** - Defines a one-to-many dependancy between objects so that when one object’s state changes, all it’s dependencies are notified and updated automatically.
+
+Observer pattern establishes a loosely coupled relationship between subject & observer. Subject does not need to know the implementation of the observer as long as it implements the observer interface.
+
+This is similar to the pub-sub pattern seen in message queues.
+
+**Design Principles**
+- Strive to make objects that interact loosely coupled
+>
+**Design-Pattern Ranking**: **A-tier**
+Definitely a key design pattern to understand, great concept.
+
+## Chapter 3: The Decorator Pattern
+![Decorator Pattern](https://sourcemaking.com/files/v2/content/patterns/Decorator_example.png)
+
+Not a big fan of this illustration but it makes the most sense to me. The decorator pattern essentially allows you to nest classes with the common supertype in order to add additional responsibilities to it. Take for instance the gun and the modifications, each modification is a decorator (sub-class) that adds additional responsibilities/behaviours to the gun. (e.g scope for aim, silencer for sound)
+
+**The Decorator Pattern** - Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending funtionality.
+
+**Design Principles**
+- Classes should be open for extension but closed for modification.
+>
+A common example of the decorator pattern is the IO Streams in Java, where the InputStream is wrapped by multiple decorators to add additional responsibilities based on the specific use case. For instance, FileInputStream would require a separate decorator, likewise for NetworkInputStream and so on...
+
+Downside of the decorator pattern is that code readability and maintainability quickly deteriorate as the number of decorators increase. 
+
+**Design-Pattern Ranking**: **B-tier**
+I don't see myself using this pattern that often due to the rare use case of this, and if so I would rather approach it a different way to prevent the nesting and deterioration of code readability.
+
+## Chapter 4: The Factory Pattern
+![Factory Pattern](https://media.geeksforgeeks.org/wp-content/uploads/20240401155141/FactoryMethodDesignPattern.jpg)
+
+From the illustration above, we see that a factory is actually being used by a factory. In essence, we can swap the algorithm that we use to create objects at runtime. The factory itself is an interface and the product itself is also an interface.
+
+**The Abstract Factory Pattern** - Provides and interface for creating families of related or dependent objects without specifying their concrete classes. (e,g Car Factory, Pizza Factory)
+
+**The Factory Pattern** - Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory method lets a class defer instantiation to subclasses.
+
+**Inversion of Control** - The higher level module is dependent on the lower level module, but the lower level module is not dependent on the higher level module. This is because lower level modules are the concrete implementations that the factory depend on.
+
+I've used this pattern extensively when working with server-dirven UI, where there are repetitive icons, it is useful to create an icon factory and have unique logic for each icon that will be rendered.
+
+**Design Principles**
+- Depend on abstractions, not concrete implementations
+>
+**Design-Pattern Ranking**: **S-tier**
+Very valuable pattern, keeps your code clean and DRY. Also makes it extensible in the future.
+
+## Chapter 5: The Singleton Pattern
+![Singleton Pattern](https://refactoring.guru/images/patterns/diagrams/singleton/structure-en.png?id=4e4306d3a90f40d74c7a4d2d2506b8ec)
+
+**The Singleton Pattern** - Ensure a class has only one instance and provide a global point of access to it.
+
+To ensure that only 1 instance of this class exists globally, the book listed a few ways to achieve this:
+- **Private constructor**, essentially preventing any other class from instantiating the class.
+- **Static method** that returns the instance of the class. First check if the instance is already created, if so return the instance, otherwise we instantiate the instance and return it. We have to be careful with this one as if accessed concurrently the behaviour would be undefined.
+>
+This was a wow pattern for me. It was really useful and I actually used it in a recent project to handle concurrent access to a shared class instance. The class itself was expensive to instantiate, requiring multiple RPC roundtrips, so by using the singleton pattern to instantiate the class we saved a lot of network I/O, improving the performance of the application. With that said you also have to ensure that any modifications to the class are thread safe. (e.g synchronized keyword or atomic set/get operations).
+
+There is a caveat to using the synchronized keyword, if used in a critical section of a function, it could degrade performance.
+
+This pattern also introduces hard-coupling of several business logic that requires this class, as a refactor of the singleton class means that the change is also propagated to the dependent classes.
+
+**Design Principles**
+- Control creation of objects through a class
+>
+**Design-Pattern Ranking**: **S-tier**
+Would highly recommend, I think that there are a lot of real-life scenarios where the singleton pattern would come in handy.
+
+## Chapter 6: The Command Pattern
+![Command Pattern](https://media.geeksforgeeks.org/wp-content/uploads/20240202154433/CommandPatternExampledrawio-(3).png)
+
+The way I understood this pattern was by focusing on how this pattern decouples the invoker and receiver. Essentially, each action/command is a class that implements the Command interface, and each command has a receiver that receives the command, executes it and returns the result.
+
+**The Command Pattern**- Encapsulates a request as an object, thereby letting you parameterize other objects with different requests, queues or log requests.
+
+![Command Pattern Sequence Diagram](https://perfectjpattern.sourceforge.net/images/command_sequence.png)
+
+The workflow is invoker -> Command -> Receiver. Using the above image as an example, the invoker would be the Remote Control, Command could be TurnOnCommand or AdjustVolumeCommand. And with each command there is a receiver, for the cause of TurnOnCommand it could be a TV, Car, Lamp; as for the AdjustVolumeCommand it could be laptop, stereo, headphones... 
+
+In this example, we delegate the decision to the command and invoker simply needs to set what "button" invokes what command.
+
+An example of this in real-life would be task queues, where each task has a method to execute. Each thread simply pulls a task off the queue and calls task.execute() to start processing. Notice that the invoker (thread) has no knowledge of the task (receiver), it only knows that by calling the command the command will execute the task.
+
+**Design-Pattern Ranking**: **B-tier**
+I can see how this can be powerful, especially with the queue example. However, outside of that I can't really think of many use cases.
+
+## Chapter 7: The Adapter Pattern
+![Adapter Pattern](https://media.geeksforgeeks.org/wp-content/uploads/20240204210126/Class-Diagram-of-Adapter-Design-Pattern_.webp)
+
+**Adapter** - Converts the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.
+
+There are 2 types of adapters:
+1. **Class Adapters**: Uses inheritance to create a new class with the exact same method but with a different name.
+2. **Object Adapters**: Object adapter uses object composition, passing in the adaptee into the adapter and calling the method by adaptee.function().
+>
+The object adapter is similar to the decorator pattern but is different as decorator adds additional responsibility to an object whereas adapter massages the function such that it complies with the client.
+
+**Facade Pattern** - Provides a unified interface to a set of interfaces in a subsystem. Facade defines a high-level interface that makes the subsystem easier to use.
+- Adapter but simpler, simplifies a complex interface.
+- When there are many complex interfaces, the facade pattern envelops everything and exposes a simpler one for clients
+- Adapter is more so a 1-1 translation where as the Facade pattern is a 1:N translation.
+>
+![Facade Pattern](https://media.geeksforgeeks.org/wp-content/uploads/20240118172329/what-is-Facade-Method-Design-Pattern.jpg)
+
+Utilises the **Principle of least knowledge**, which is used to reduce large amounts of coupling to prevent large cascading changes. If an underlying interface were to change, instead of changing all upstream clients that implement the class we can simply change the facade.
+
+Cons of the adapter is that there will be a lot of small wrapper classes, which increases the verbosity of the code and affect maintainability of the code.
+
+**Design Principle** - Talk only to your friends
+
+**Design-Pattern Ranking**: **A-tier**
+A straight-forward pattern that has practical use cases in mature codebases where backwards compatability is a requirement.
+
+## Chapter 8: The Template Method
+![Template Method](https://sourcemaking.com/files/v2/content/patterns/Template_method_example.png)
+
+From the example above, we see that all workers have the same routine. However, there are some steps that are slightly different. This is where we can have interchangable classes that inherit the abstract class and override what is different. For instance, the way the manager relaxes is different from the rest, hence the manager classes's relax method is overridden. Despite overriding, the overall workflow is still the same.
+
+**Template Method** - Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template method lets subclasses redefine certain steps of an algorithm without changing the algorithm's structure.
+
+**Design Principle** - Don't call us, we'll call you
+
+**Hook**
+- An empty concrete method in abstract class so subclasses can override it, essentially “hooking” into it.
+- Useful for stubs that can be optionally overridden by subclasses.
+>
+**Design-Pattern Ranking**: **A-tier**
+Quite straight-forward pattern, I can see it being used in many real-life applications. Only concern is the potential lack of extensibility if all classes have to follow the same template.
+
+Moreover, another concern is code bloating as every class would essentially have to implement all the same template methods.
+
+## Chapter 9: The Iterator and CompositePattern
+![Iterator Pattern](https://www.geeksforgeeks.org/wp-content/uploads/Iterator-Design-Pattern-in-Java.jpg)
+
+**Iterator** - Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
+
+Each class implements a concrete class of the iterator interface and return it through a function like getIterator.
+- hides internal implementation of collection
+>
+Iterator is a class that encapsulates a collection of items (list, set, array…), providing a unified method to get the next element.
+- **hasNext()** - Check if there is a next element
+- **next()** - Get the next element
+>
+
+**Cohesion** - how closely a class or module supports a single purpose or responsibility
+- high cohesion: similar functions
+- Low cohesion: unrelated functions
+>
+**Internal vs external iterators**
+- **Internal**: client can’t control iteration, only self can. Less flexible, but beneficial as all we have to do is input an operator and the iterator handles the rest.
+- **External**: client can control iteration
+>
+![Composite Pattern](https://upload.wikimedia.org/wikipedia/commons/6/65/W3sDesign_Composite_Design_Pattern_UML.jpg)
+**Composite** - Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.
+- Can contain both the item and a list of item. Item would be a leaf as it doesn’t contain an item list. But a list of item would be a node.
+- Composite holds components and leaf elements
+>
+![Composite Tree illustration](https://refactoring.guru/images/patterns/diagrams/composite/problem-en.png?id=3320d7ddc5bdc3e43752bb4393710794)
+
+As we can see from the illustration above, the objects are the "leaf nodes" and the "composite" are the boxes. To loop through all the objects we can use a stack and implement a DFS approach.
+
+**Design-Pattern Ranking**: **S-tier**
+Very useful pattern for understanding the inner-working of iterators in OOP languages like Java or Python.
+
