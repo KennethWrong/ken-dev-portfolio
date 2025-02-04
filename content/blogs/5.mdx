@@ -185,7 +185,7 @@ Quite straight-forward pattern, I can see it being used in many real-life applic
 Moreover, another concern is code bloating as every class would essentially have to implement all the same template methods.
 
 ## Chapter 9: The Iterator and CompositePattern
-![Iterator Pattern](https://www.geeksforgeeks.org/wp-content/uploads/Iterator-Design-Pattern-in-Java.jpg)
+![Iterator Pattern](https://media.geeksforgeeks.org/wp-content/uploads/20240321160725/Iterator1.jpg)
 
 **Iterator** - Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
 
@@ -217,3 +217,37 @@ As we can see from the illustration above, the objects are the "leaf nodes" and 
 **Design-Pattern Ranking**: **S-tier**
 Very useful pattern for understanding the inner-working of iterators in OOP languages like Java or Python.
 
+## Chapter 10: The State Pattern
+![State Pattern](https://media.geeksforgeeks.org/wp-content/uploads/20240212160624/ClassDiagramState.webp)
+
+**State** - Allow an object to alter its behavior when its internal state changes. The object will appear to change its class.
+
+The way I see state pattern is similar to a state machine but each state is an object composition. An object would have a state interface object and each state determines the logic as to which state to go to next.
+
+![State machine](https://media.licdn.com/dms/image/D4E12AQEB2cUkZ5XSfg/article-cover_image-shrink_720_1280/0/1693686461811?e=2147483647&v=beta&t=AV39QlEvWYu7PJtYcGMohGgHsXl39-XqYX8Y4U1tDSw)
+
+This decouples the state logic from the main object and allows for decentralized state management. This also adheres to the single responsibility principle that each object should only have a single responsibility, in this case, the object's only responsibility is to call the corresponding function in the state interface. The main object is unaware of the state transition logic.
+
+Using the state pattern will result in having more classes as we create a new class for each state. However, I think this is good trade-off for better code maintainability and readability.
+
+**Design-Pattern Ranking**: **S-tier**
+A lot of real-life applications require state management, so this pattern could come in handy when it comes to handling state transitions. However, in my case when I was building out the resource management platform at Tiktok, I opted for enumerated states and if statements as the transition logic was not complex and can be managed by if statements.
+
+## Chapter 11: The Proxy Pattern
+![Proxy pattern](https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Proxy_pattern_diagram.svg/439px-Proxy_pattern_diagram.svg.png)
+
+Proxy pattern helps control access to an object. It essentially is an interface for the client, decoupling the main object and the client for reasons such as security, performance, etc...
+
+**Proxy Pattern** - provides a surrogate or placeholder for another object to control access to it.
+
+There are many proxy patterns:
+- **Remote Proxy** - controls access to a remote object. In the book it mentioned remote heap calls, essentially calling from one JVM to another. Java has a in-built remote proxy (RMI) that handles this.
+- **Virtual Proxy** - When an object is expensive to instantiate, virtual proxy is a stub of the object until a request requires the object to be instantiated. This could be rendering a large image or a video, where the image/video is not rendered until explicity requested for.
+- **Caching Proxy** - When an object is expensive to create, caching proxy caches the object and returns the cached object when the same request is made again.
+- **Protection Proxy** - When an object is protected by a security mechanism, protection proxy controls access to the object.
+- **Synchronization Proxy** - When an object is accessed by multiple threads, synchronization proxy controls access to the object to ensure thread safety.
+>
+To an extend, this pattern is similar to the decorator pattern as it encapsulates the object and exposes a different function for users to interface with it. The difference is the intent of the function. In decorator pattern we add additional responsibilities to the object, whereas in proxy pattern we control access to the object.
+
+**Design-Pattern Ranking**: **B-tier**
+I believe this is more a conceptual understand rather than a practical pattern that is implemented in code. In the end, I feel like the proxy can be called abstraction.

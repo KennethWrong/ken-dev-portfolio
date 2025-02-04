@@ -21,6 +21,7 @@ import {
   CustomH4,
 } from "@/components/blog/BlogComponents";
 import path from "path";
+import Footer from "@/components/Footer";
 
 function GetMDXComponent() {
   const overrideComponents = {
@@ -52,23 +53,26 @@ export default async function Page({
   const overrideComponents = GetMDXComponent();
 
   return (
-    <div className="items-center p-6 mt-30 md:mt-20 flex flex-col">
-      <div className="flex flex-col font-[Raleway] w-full md:w-4/5 lg:w-3/5 lg:max-w-3xl md:max-w-4xl">
-        <BlogIntro metadata={NewBlogMetadata(data)} />
-        <div id="blog-content">
-          <ReactMarkdown
-            remarkPlugins={[remarkBreaks]}
-            rehypePlugins={[rehypeRaw]}
-            children={content.replace(/\n/gi, "&nbsp; \n")}
-            components={overrideComponents}
-            className={"flex flex-col"}
-          />
+    <div>
+      <div className="items-center p-6 mt-30 md:mt-20 flex flex-col">
+        <div className="flex flex-col font-[Raleway] w-full md:w-4/5 lg:w-3/5 lg:max-w-3xl md:max-w-4xl">
+          <BlogIntro metadata={NewBlogMetadata(data)} />
+          <div id="blog-content">
+            <ReactMarkdown
+              remarkPlugins={[remarkBreaks]}
+              rehypePlugins={[rehypeRaw]}
+              children={content.replace(/\n/gi, "&nbsp; \n")}
+              components={overrideComponents}
+              className={"flex flex-col"}
+            />
+          </div>
+          <div className="mt-10"></div>
+          <BlogContactCard />
+          <div className="mt-10"></div>
+          <RecentBlogs />
         </div>
-        <div className="mt-10"></div>
-        <BlogContactCard />
-        <div className="mt-10"></div>
-        <RecentBlogs />
       </div>
+      <Footer />
     </div>
   );
 }
