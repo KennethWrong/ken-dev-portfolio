@@ -54,7 +54,7 @@ export default function AISearchConversation() {
     setIsStreamLoading(true);
 
     try {
-      const response = await fetch("http://52.15.46.81:8000/blog-search", {
+      const response = await fetch("http://52.15.46.81:443/blog-search", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
