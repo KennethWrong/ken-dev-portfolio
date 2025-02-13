@@ -1,0 +1,52 @@
+---
+slug: 6
+author: "Kenneth Wong"
+date: "2025-02-13"
+title: "Uvicorn, Gunicorn and FastAPI"
+description: "Investigative work I did for a fastAPI project that I am currently working on"
+readTime:  10
+tag: ["backend", "python"]
+thumbnail: "https://media.licdn.com/dms/image/v2/D4D12AQFKyWnZ9Z_cJQ/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1661585147090?e=2147483647&v=beta&t=KdCMGp42HfoqfXbTDN0OVFyyEbjSu0IFldk9cyT7vCA"
+---
+
+Recently I have been working on a project that uses fastAPI as the webserver. Our project is low on CPU utilization. Our webserver mainly sends out HTTP requests to 3rd party APIs and servers the response to the client. Hence, our workload is IO-bound. 
+
+Python has the GIL (Global Interpreter Lock) that prevents threads from running in parallel, meaning that multithreading will still be ran only by the main thread. This made me look deeper into how we can optimize and scale our fastapi application to serve more requests.
+
+## Fastapi 
+![FastAPI](https://refine-web.imgix.net/blog/2023-08-07-fast-api/social-2.png?w=1788)
+Fastapi incorporates Asyncio to handle concurrent requests, meaning that the main thread can pre-empt async functions to handle incoming requests. This is great for IO-bound applications as the bottleneck is IO and not the CPU.
+
+With that said, it is also important not to include blocking functions in the async functions as it will essentially negate the purpose of using asyncio, it will block the main thread and not allow other requests to be handled. A famous pitfall is using `time.sleep()`.
+
+### Multithreading
+![Multithreading](https://media.licdn.com/dms/image/v2/D5612AQHG77oKct76lQ/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1692946169635?e=2147483647&v=beta&t=3AJ_Vu8UC3F_jDn33n9FFkwhwPp5MRtmHiI37pQYrK0)
+I use multithreading when I need to make concurrent network calls to reduce latency. This has a smaller memory footprint and allows easy memory sharing between threads. It makes more sense to spin threads than to spin processes in this case as network calls are IO-bound.
+
+
+### Multiprocessing
+![Multiprocessing](https://pylessons.com/media/Tutorials/YOLO-tutorials/YOLOv4-TF2-multiprocessing/1.png)
+I use multiprocessing when I need to handle CPU-bound tasks. For example, I needed to compress mp3 files in the background, so to prevent blocking the main thread, I spun up a new process to handle the compression, allowing the main thread to continue serving requests. 
+
+Multiprocessing has a larger memory footprint as we copy the entire memory space for each process. This also means that memory sharing is more difficult. Fortunately, each mp3 file was unique so we did not run into any synchronization issues or requirement of mutex.
+
+## Uvicorn and Gunicorn
+![Uvicorn and Gunicorn](https://media.licdn.com/dms/image/v2/D4E12AQHYi0n_n963Yw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1681752891921?e=2147483647&v=beta&t=bdvy7tXQzkkZmEanz1N3vAE7__M18SMho1fRguU8YGc)
+Uvicorn and Gunicorn are process managers that bind to a port. Each worker is responsible for intercepting a users request, getting the scope and data and passing the data to the application running on the worker. They help with scaling the application internally (within the same container) by spinning up workers to loadbalance the requests. For external scaling, we would probably need a Load Balancer and a container orchestration tool like Kubernetes.
+
+### WSGI and ASGI
+**WSGI (Web Server Gateway Interface)** is a specification for a Python interface to web servers. It is a synchronous interface, meaning that each request is handled by one worker.
+
+**ASGI (Asynchronous Server Gateway Interface)** is a specification for a Python interface to web servers. It is an asynchronous interface, meaning that each request is handled by one worker. It is the successor to WSGI as it can handle asynchronous operations, which is a big part of modern web development due to the increase in outbound network requests.
+
+Gunicorn is a WSGI server, hence it is not compatible with FastAPI as FastAPI is an ASGI application as mentioned above. Gunicorn provides you finer grain control over the workers and the application. Moreover, Gunicorn does not support persistent connections, it terminates once a response is sent, regardless whether there is a keep alive header.
+
+However, Uvicorn has a Gunicorn compatible worker that allows us to run Gunicorn with FastAPI. This is great as we can have finer grain control over the workers and internally scale up the # of requests we can handle.
+
+According to Gunicorn, it is recommended to spin up **2*cpu_cores + 1 workers**, as it is under the assumption that for each core, there will be a worker responsible for processing requests and another for receiving requests. There is no golden number for the number of workers, too little and you will not be able to utilize the full potential of the CPU, too many and you will have idle workers taking up memory. In the end, trial and error is the best way to determine the number of workers that your application needs.
+
+A typical Gunicorn command to run FastAPI would be:
+*gunicorn main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker*
+
+## Conclusion
+It was very insightful to learn about how web-servers like Flask, Django and FastAPI work internally. I used to just run the application without thinking. But after learning about scaling and asyncio, it was important for me to learn the lifecycle of a request and what was the entire process of the request was from client to server.
