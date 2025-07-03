@@ -4,6 +4,15 @@ import TextImageRow from "../TextImageRow";
 
 export const ProjectList: Project[] = [
   {
+    id: 7,
+    title: "Yaplabs.ai",
+    imgSrc: "/images/project/yaplabs_logo.png",
+    content: [
+      "A genAI solution to language tutoring. Enabling language learners to be able to practice their language with an AI enabled real-time tutor.",
+    ],
+    link: "https://yaplabs.ai",
+  },
+  {
     id: 6,
     title: "Parsyll",
     imgSrc: "/images/project/parsyll.png",
