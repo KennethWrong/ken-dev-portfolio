@@ -1,0 +1,40 @@
+---
+slug: 8
+author: "Kenneth Wong"
+date: "2024-10-12"
+title: "Gradient Descent intuition"
+description: "My own interpretation of gradient descent and how it works. Why do we minus the gradient?"
+readTime:  10
+tag: ["ML"]
+thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxXSE68EvQXiHvjPxNuFr_Yurg-XpJoaUkkA&s"
+---
+
+## Overview of Gradient Descent
+![gradient descent](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFhVQGvDaG8MXZ8aYMzBCmqWqdLsrfQdqGGQ&s)
+Gradient Descent is the theory behind how a machine-learning model and neural network learn.
+
+To assess the performance of our model we have a loss function that compares how close the output of our model is to the actual data. This could be Mean Square Error, Cross Entropy Loss, etc... 
+
+The function used tends to have local or global minimum points where the loss is low compared to its neighbours. Gradient descent helps us find such a point, making our model more performant by changing the weights used by our model with respect to the gradient of the loss function.
+
+## Interpretation of gradient
+![gradient interpretation](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyjOtoV8SlM-mQMS6zQADwDDx6vjae5AE6Eg&s)
+To understand the gradient of the loss function, let us revisit the first principle of derivatives.
+
+An interpretation of the principle is whether increasing θ infinitesimally increases or decreases the output of our function.
+
+So we are always moving θ forwards and checking if it has a positive or negative effect on our function output.
+
+## 1D Representation
+![1D representation](https://hbcfj3ve6zsq0764.public.blob.vercel-storage.com/blog/IMG_9495B85949BC-1-GilmxZJoxrOUrAMj2DWQS7sDXF1Bw1.jpg)
+Here we present a 1D case of gradient descent, where the curve is the loss function g(θ) of our model with respect to θ.
+
+From the example on the left, we observe that an increase in θ leads to a decrease in g(θ), having a negative gradient. 
+
+When we plug the gradient into our equation it results in an increase in the value of θ, moving our θ in the opposite direction of the gradient. So it checks out as a larger θ does result in a decrease in loss, which is what we want.
+
+## 2D Visualization
+![2D visualization](https://hbcfj3ve6zsq0764.public.blob.vercel-storage.com/blog/IMG_EA5AAAE4AD84-1-ijncQxBpHZEXAkgMPJSdPr8Ym4E9Kb.jpg)
+A higher dimensional representation of our loss function may be a bit more intimidating. But the idea is the same, we move our parameters opposite to the direction of the gradient of our loss function at the specific point θ0. 
+
+In this case, the loss function is depicted as a convex graph as it is 3D, where the value of the loss is on the z-axis. The middle of the onion structure is where the gradient is 0, Where we want to be.
