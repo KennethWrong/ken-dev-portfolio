@@ -1,0 +1,99 @@
+---
+slug: 9
+author: "Kenneth Wong"
+date: "2025-03-22"
+title: "Yaplabs.ai"
+description: "A genAI solution to language tutoring. Enabling language learners to be able to practice their language with an AI enabled real-time tutor."
+readTime:  10
+tag: ["genAI", "LLM", "backend", "python"]
+thumbnail: "https://hbcfj3ve6zsq0764.public.blob.vercel-storage.com/yaplabs_logo-zsyTHGyVO9xOVdfnZO0zzXTxR6xPrN.png"
+---
+
+## What is yaplabs.ai?
+Yaplabs.ai is an application powered by AI to provide you with a language tutor that is **available at your fingertips 24/7**. We provide a one-stop-shop language learning experience for users, providing them with an AI tutor to converse with, **instant feedback capabilities**, **vocabulary building** and **conversation summary** features.
+
+
+## What problems does yaplabs.ai solve:
+Most language learners who rely on platforms like iTalki have trouble finding a good tutor that fits their schedule. Being a full-time worker in PST, finding a French tutor to practice with is tedious due to timezone differences.
+Yaplabs.ai solves this by providing a 24/7 available AI tutor of multiple languages so that users can communicate with them **whenever they are free**. Moreover, we also integrate conversation summaries and instant word lookups to streamline the user’s learning process.
+
+## Video
+Here's a demo video of yaplabs.ai in action:
+
+[![yaplabs video](https://i9.ytimg.com/vi/UloY5tbSVe8/mq2.jpg?sqp=CNySmsMG-oaymwEoCMACELQB8quKqQMcGADwAQH4Ac4FgAKACooCDAgAEAEYRyBeKGUwDw==&rs=AOn4CLAwqR6WHpB8wEykNMzhojRujgxlmw)](https://www.youtube.com/shorts/UloY5tbSVe8)
+
+The video demonstrates the key features of yaplabs.ai including:
+- Real-time conversation with AI tutor
+- Instant feedback on pronunciation and grammar
+- Vocabulary building through contextual learning
+- Conversation summaries and progress tracking
+
+
+## System Design
+![Yaplabs.ai system design](https://hbcfj3ve6zsq0764.public.blob.vercel-storage.com/lango-system-design-FkEcie2twkFYASaVM7g7gsiPZIvM3V)
+
+This is the overarching design of the system.
+
+### S3
+S3 is to store the MP3 files, we do client side uploading to S3 with presigned url to reduce the load on the server.
+
+### Redis
+Redis is to store user messages and conversations.
+
+### OpenAI API
+This is the LLM provider that we are using before we transition to eleven labs due to cost concerns.
+
+### Postgres
+A standard Postgres database to store user information, conversations and other metadata.
+
+
+## Past conversations context
+![Yaplabs.ai past conversations context](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlVHV56YxZOI_mj_rbKjNRg1bQg2cb_7WFeQ&s)
+Past conversations are very important as we want the tutor to remember their past conversations with this user to prevent the conversation
+from being repetitive and redundant. Therefore, regardless of the lesson user is in, we still fetch the previous 10 messages from our datastore and
+feed it to the LLM.
+
+Those this is a short term solution as 10 messages is not enough to remember the user's past conversations. Therefore, we need to store the past conversations in a more permanent storage.
+A better solution would probably be to summarize the past conversations and store the summary in a more permanent storage.
+
+
+## Function calling
+![Yaplabs.ai function calling](https://hbcfj3ve6zsq0764.public.blob.vercel-storage.com/yaplabs-rag-bC1CVKiowbaX4HhYdMq68y1l0Nsl6x)
+A big part of this AI was to make it personalizable, relatable and up to date. To achieve this, I designed
+function calling to allow the AI to call functions to get the latest information. Information such as news, weather etc...
+
+
+## Chunking
+![Yaplabs.ai chunking](https://hbcfj3ve6zsq0764.public.blob.vercel-storage.com/yaplabs_llm-8q8D66M50fdHxSHVjgVl3IHHK6LKaV.png)
+To make the entire workflow as low latency as possible, a lot of optimizations were required in order to realize the system.
+
+There are 2 steps we need to take:
+1. Generate textual LLM response
+2. Generate audio response in mp3 format
+>
+For textual generation, we generate a stream of text. We count each complete sentence as a chunk, for each complete chunk
+we create a new thread and send it to the LLM to generate the mp3 response. Then, for each chunk that has completed the mp3 response,
+we stream the bytes back to client as the mp3 bytes are returned.
+
+
+# Choosing your tutor
+![Yaplabs.ai choosing your tutor](https://hbcfj3ve6zsq0764.public.blob.vercel-storage.com/yaplabs-tutors-TK0mnIt1XFLnvDAZWY8IHjbKmW49zG)
+Inspired by character.ai, I wanted users to be able to choose from several tutors of different personalities. Although daunting at first, I realized that it was
+not as hard as I thought. The only thing I needed to do was to change the system prompt being sent to the LLM. 
+
+Example of the system prompt:
+- **Alice - English Teacher**: "You are a 21 year old English teacher from the UK. You are a native English speaker and you are very friendly and engaging. You enjoy reading, hiking and exploring the country side."
+- **Alfred - English Teacher**: "You are a 60 year old History Professor from the US. You have a stern demeanor and you are very strict. You love teaching history and you are very passionate about it."
+>
+Just like this, you have created 2 completely different tutors with different personalities.
+
+
+## Lesson summary
+![Yaplabs.ai lesson summary](https://images.unsplash.com/photo-1462642109801-4ac2971a3a51?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3VtbWFyeXxlbnwwfHwwfHx8MA%3D%3D)
+I believed that lesson summary would be a great feature to have. So my naiive solution was to just group all the messages into one big string and send it to the LLM as context.
+This was useful but it didn't provide more insightful information like pronunciation score, grammar, speech abilitiy etc... This function would require further investigations.
+
+## Conclusion
+I have learnt a lot about the design of genAI applications. Moving from learning hardcore machine learning, building out each neural net layer to
+working with an abstracted API is a breathe of fresh air. This definitely shows me a glimpse of the future of software engineering, where a lot of the work is
+abstracted by AI.

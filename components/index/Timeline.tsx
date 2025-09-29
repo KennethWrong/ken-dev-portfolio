@@ -15,16 +15,27 @@ type TimelineItem = {
 
 const companyTimelineList: TimelineItem[] = [
   {
+    companyName: "DoorDash · MxML",
+    positionName: "Machine Learning Engineer II",
+    employmentType: "Full-Time",
+    location: "CA, US",
+    contents: [
+      "Machine Learning Engineer in the Merchant Platform team, building agentic solutions to improve merchant operations.",
+    ],
+    imageSrc: "/images/company_logo/doordashLogoBlack.png",
+    date: "Sept 2025 - pres",
+  },
+  {
     companyName: "DoorDash",
     positionName: "Software Engineer II",
     employmentType: "Full-Time",
     location: "CA, US",
     contents: [
-      "Incoming software engineer at DoorDash, working on the homepage team.",
+      "Software Engineer at DoorDash on the Discovery Experience team, building personalized features to millions of DoorDash customers.",
     ],
     imageSrc: "/images/company_logo/doordashLogo.png",
     // redirectionLink: "/experiences/doordash_2024",
-    date: "Feb 2025 - pres",
+    date: "Feb 2025 - Sept 2025",
   },
   {
     companyName: "TikTok",
