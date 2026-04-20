@@ -6,13 +6,17 @@ type MarqueeItem = {
 export default function TextMarquee({
   items,
   font = "font-mono",
+  border = true,
 }: {
   items: MarqueeItem[];
   font?: string;
+  border?: boolean;
 }) {
   return (
     <div
-      className="relative flex overflow-x-hidden border-t-2 border-b-2"
+      className={`relative flex overflow-x-hidden ${
+        border ? "border-t-2 border-b-2" : ""
+      }`}
       id={"tech"}
     >
       <div className="py-12 animate-marquee whitespace-nowrap">
